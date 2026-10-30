@@ -1,0 +1,146 @@
+{
+  "host": "127.0.0.1",
+  "port": 3352,
+  "started": "2026-10-29T20:28:26",
+  "steps": [
+    {
+      "step": "1 connect + HELLO",
+      "passed": true,
+      "hello": "EVT:HELLO:SENTINEL:1:IDLE:0"
+    },
+    {
+      "step": "2 PING acknowledgements",
+      "passed": true,
+      "sent": 200,
+      "acknowledged": 200,
+      "success_rate": 1.0,
+      "latency": {
+        "n": 200,
+        "mean_ms": 0.02,
+        "median_ms": 0.01,
+        "p95_ms": 0.04,
+        "max_ms": 0.08
+      }
+    },
+    {
+      "step": "3 STOP acknowledged",
+      "passed": true,
+      "reply": "OK:201:STOP",
+      "latency_ms": 0.03
+    },
+    {
+      "step": "4 invalid commands rejected (and link still usable)",
+      "passed": true,
+      "cases": 8,
+      "replies": [
+        {
+          "sent": "hello",
+          "reply": "ERR:0:BAD_FORMAT"
+        },
+        {
+          "sent": "JUMP",
+          "reply": "ERR:202:UNKNOWN_CMD"
+        },
+        {
+          "sent": "FORWARD:150:300",
+          "reply": "ERR:203:BAD_ARG"
+        },
+        {
+          "sent": "FORWARD:30:99999",
+          "reply": "ERR:204:BAD_ARG"
+        },
+        {
+          "sent": "PING:extra",
+          "reply": "ERR:205:BAD_ARG"
+        },
+        {
+          "sent": "RESET",
+          "reply": "ERR:206:NEEDS_CONFIRM"
+        },
+        {
+          "sent": "1:PING (stale seq)",
+          "reply": "ERR:1:BAD_SEQ"
+        },
+        {
+          "sent": "80-char line",
+          "reply": "ERR:0:TOO_LONG"
+        }
+      ]
+    },
+    {
+      "step": "5 movement accepted and ends by itself",
+      "passed": true,
+      "reply": "OK:208:FORWARD:30",
+      "move_done_after_ms": 304.3
+    },
+    {
+      "step": "6 watchdog stops motion when the laptop goes silent",
+      "passed": true,
+      "stopped_after_ms": 504.4,
+      "expected_ms": 500,
+      "status": {
+        "state": "IDLE",
+        "left": 0,
+        "right": 0,
+        "watchdog_trips": 1,
+        "uptime_s": 1,
+        "motors_enabled": false,
+        "protocol": 1
+      }
+    },
+    {
+      "step": "7 dropped connection stops motion",
+      "passed": true,
+      "hello_after_reconnect": "EVT:HELLO:SENTINEL:1:IDLE:0",
+      "status": {
+        "state": "IDLE",
+        "left": 0,
+        "right": 0,
+        "watchdog_trips": 1,
+        "uptime_s": 1,
+        "motors_enabled": false,
+        "protocol": 1
+      }
+    },
+    {
+      "step": "8 emergency latches, blocks movement, needs RESET:CONFIRM",
+      "passed": true,
+      "fall_ack_ms": 0.17,
+      "replies": [
+        "OK:2:FALL",
+        "ERR:4:EMERGENCY_ACTIVE",
+        "OK:5:MUTE",
+        "ERR:6:NEEDS_CONFIRM",
+        "OK:8:RESET"
+      ],
+      "state_after_reset": "IDLE"
+    },
+    {
+      "step": "9 FALL handled behind a burst of 20 messages",
+      "passed": true,
+      "fall_ack_ms": 0.04,
+      "replies_before_fall_ack": 20,
+      "reset": "OK:31:RESET"
+    },
+    {
+      "step": "10 RobotClient heartbeat, emergency and reset",
+      "passed": true,
+      "heartbeat_seconds": 3.0,
+      "heartbeats_acknowledged": 19,
+      "timeouts": 0,
+      "rtt_mean_ms": 0.2,
+      "rtt_p95_ms": 0.3,
+      "emergency_ack_ms": 5.6,
+      "move_blocked_reason": "emergency active - movement blocked until reset",
+      "move_after_reset": "sent"
+    }
+  ],
+  "robot": {
+    "protocol": 1,
+    "state": "IDLE",
+    "motors_enabled": false
+  },
+  "motors_enabled": false,
+  "finished": "2026-10-29T20:28:31",
+  "all_passed": true
+}

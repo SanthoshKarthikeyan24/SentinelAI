@@ -1,0 +1,160 @@
+video_id,dataset,path,subject,session,category,duration_s,fps,width,height,description
+gmdcsa24_S1_ADL_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/01.mp4,S1,S1_ADL,ADL,8.274,29.612,1280,720,Sitting on the bed to sleeping right side on the bed. Face towards camera
+gmdcsa24_S1_ADL_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/02.mp4,S1,S1_ADL,ADL,6.69,29.598,1280,720,Sitting on the bed to sleeping left side on the bed. Face towards the camera
+gmdcsa24_S1_ADL_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/03.mp4,S1,S1_ADL,ADL,6.689,29.748,1280,720,Sitting on the bed to sleeping left side on the bed. Face towards the ceiling
+gmdcsa24_S1_ADL_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/04.mp4,S1,S1_ADL,ADL,5.809,29.263,1280,720,From sleeping left side on the bed (Face towards the ceiling) to sitting on the bed
+gmdcsa24_S1_ADL_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/05.mp4,S1,S1_ADL,ADL,10.546,29.775,1280,720,Coming to the bed and reading book in the sitting position. Front view of the subject. One leg folded
+gmdcsa24_S1_ADL_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/06.mp4,S1,S1_ADL,ADL,12.226,29.774,1280,720,Sitting on the bed (front view) to reading the book while supporting towards the wall. Side view
+gmdcsa24_S1_ADL_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/07.mp4,S1,S1_ADL,ADL,7.537,29.719,1280,720,Reading book while sitting on the chair; Front view;Leg straight
+gmdcsa24_S1_ADL_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/08.mp4,S1,S1_ADL,ADL,6.289,29.732,1280,720,Walking in the room
+gmdcsa24_S1_ADL_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/09.mp4,S1,S1_ADL,ADL,4.994,29.438,1280,720,Reading book while walking in the room
+gmdcsa24_S1_ADL_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/10.mp4,S1,S1_ADL,ADL,3.921,29.328,1280,720,Reading book while walking in the room
+gmdcsa24_S1_ADL_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/11.mp4,S1,S1_ADL,ADL,9.314,29.742,1280,720,Walking to sitting on the chair and then reading book
+gmdcsa24_S1_ADL_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/12.mp4,S1,S1_ADL,ADL,7.33,29.743,1280,720,Reading book while sitting on the chair to stand up and keeping the book on the chair and going out of the room
+gmdcsa24_S1_ADL_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/13.mp4,S1,S1_ADL,ADL,6.306,29.656,1280,720,Walking to sitting on the chair (side view)
+gmdcsa24_S1_ADL_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/14.mp4,S1,S1_ADL,ADL,5.858,29.534,1280,720,Sitting on the chair (side view) to walking
+gmdcsa24_S1_ADL_15,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/15.mp4,S1,S1_ADL,ADL,7.169,29.571,1280,720,Walking to picking a mobile phone from the ground and then sitting on the chair
+gmdcsa24_S1_ADL_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/ADL/16.mp4,S1,S1_ADL,ADL,3.521,29.534,1280,720,Picking the mobile phone from the ground while sitting on the chair
+gmdcsa24_S1_Fall_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/01.mp4,S1,S1_Fall,FALL,6.866,29.568,1280,720,Falling from sitting on the chair to the ground. Left side Fall. Full body not visible
+gmdcsa24_S1_Fall_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/02.mp4,S1,S1_Fall,FALL,6.369,29.673,1280,720,Falling from sitting on the chair to the ground. Left side Fall. Full body not visible
+gmdcsa24_S1_Fall_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/03.mp4,S1,S1_Fall,FALL,5.922,29.722,1280,720,Falling from sitting on the chair to the ground. Left side fall
+gmdcsa24_S1_Fall_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/04.mp4,S1,S1_Fall,FALL,4.961,29.428,1280,720,Falling from sitting on the chair to the ground. Right side fall
+gmdcsa24_S1_Fall_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/05.mp4,S1,S1_Fall,FALL,5.858,29.705,1280,720,Walking to falling. Right side fall
+gmdcsa24_S1_Fall_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/06.mp4,S1,S1_Fall,FALL,5.697,29.664,1280,720,Walking to falling. Right side fall
+gmdcsa24_S1_Fall_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/07.mp4,S1,S1_Fall,FALL,5.153,29.689,1280,720,Walking to falling. Right side fall
+gmdcsa24_S1_Fall_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/08.mp4,S1,S1_Fall,FALL,4.353,29.632,1280,720,Walking to falling. Left side fall
+gmdcsa24_S1_Fall_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/09.mp4,S1,S1_Fall,FALL,4.482,29.231,1280,720,Standing position to falling. Forward Fall. Full body (head) not visible
+gmdcsa24_S1_Fall_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/10.mp4,S1,S1_Fall,FALL,4.497,29.573,1280,720,Standing position to falling. Forward Fall. Full body (right eye) not visible
+gmdcsa24_S1_Fall_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/11.mp4,S1,S1_Fall,FALL,6.097,29.685,1280,720,Standing position to falling
+gmdcsa24_S1_Fall_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/12.mp4,S1,S1_Fall,FALL,6.833,29.268,1280,720,Standing position to falling. Backward Fall
+gmdcsa24_S1_Fall_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/13.mp4,S1,S1_Fall,FALL,4.321,29.62,640,480,Standing position to falling. Backward fall. Full body (head) is not visible
+gmdcsa24_S1_Fall_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/14.mp4,S1,S1_Fall,FALL,5.697,29.663,640,480,Standing position to falling. Backward fall. Full body (both ankles) is not visible
+gmdcsa24_S1_Fall_15,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/15.mp4,S1,S1_Fall,FALL,6.002,29.659,640,480,Sitting on the chair (side view) to right side fall
+gmdcsa24_S1_Fall_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 1/Fall/16.mp4,S1,S1_Fall,FALL,6.097,29.685,1280,720,Sitting on the chair (side view) to the left side fall
+gmdcsa24_S2_ADL_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/01.mp4,S2,S2_ADL,ADL,11.394,29.841,1280,720,Talking on the mobile phone while sitting on the bed and walking
+gmdcsa24_S2_ADL_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/02.mp4,S2,S2_ADL,ADL,11.793,29.847,1280,720,Picking up a water bottle from the ground and drinking while sitting on the bed
+gmdcsa24_S2_ADL_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/03.mp4,S2,S2_ADL,ADL,11.937,29.822,1280,720,Walking; removing dust from the bed using a pillow; and sleeping on the bed
+gmdcsa24_S2_ADL_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/04.mp4,S2,S2_ADL,ADL,7.842,29.841,1280,720,Yoga: Standing forward bend (Uttanasana)
+gmdcsa24_S2_ADL_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/05.mp4,S2,S2_ADL,ADL,10.818,29.859,1280,720,Throwing a book on the bed; standing up from the ground; walking; and opening the curtain
+gmdcsa24_S2_ADL_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/06.mp4,S2,S2_ADL,ADL,10.753,29.851,1280,720,Picking up the mobile phone from the ground; placing it on the bed; and sitting on the bed
+gmdcsa24_S2_ADL_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/07.mp4,S2,S2_ADL,ADL,12.993,29.861,1280,720,Exercising (Moving both hands up and down)
+gmdcsa24_S2_ADL_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/08.mp4,S2,S2_ADL,ADL,13.666,29.856,1280,720,Exercising (Stretching thigh and trying to touch the ground:Pyramid Pose)
+gmdcsa24_S2_ADL_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/09.mp4,S2,S2_ADL,ADL,10.96,29.834,1280,720,Standing up from a sitting position on the bed and then sitting on the ground
+gmdcsa24_S2_ADL_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/10.mp4,S2,S2_ADL,ADL,7.568,29.862,1280,720,Standing up from the ground and closing the curtain
+gmdcsa24_S2_ADL_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/11.mp4,S2,S2_ADL,ADL,9.985,29.844,1280,720,Removing the shirt and hanging it on the hanger
+gmdcsa24_S2_ADL_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/12.mp4,S2,S2_ADL,ADL,7.602,29.862,1280,720,Going to bed and sleeping (belly facing downwards)
+gmdcsa24_S2_ADL_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/13.mp4,S2,S2_ADL,ADL,4.848,29.907,1280,720,Sitting on the ground and reading a book
+gmdcsa24_S2_ADL_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/14.mp4,S2,S2_ADL,ADL,11.058,15.012,1280,720,Walking and reading something while sitting on the bed
+gmdcsa24_S2_ADL_15,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/15.mp4,S2,S2_ADL,ADL,11.921,15.015,1280,720,Reading a newspaper while sitting on the bed and placing a pillow on the lap
+gmdcsa24_S2_ADL_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/16.mp4,S2,S2_ADL,ADL,11.537,14.995,1280,720,Reading a newspaper; throwing the newspaper; and sleeping
+gmdcsa24_S2_ADL_17,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/17.mp4,S2,S2_ADL,ADL,11.666,15.001,1280,720,Standing up from bed; walking; and checking the dress on the hanger
+gmdcsa24_S2_ADL_18,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/18.mp4,S2,S2_ADL,ADL,11.665,15.002,1280,720,Walking; opening the window; and looking outside
+gmdcsa24_S2_ADL_19,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/19.mp4,S2,S2_ADL,ADL,11.329,15.005,1280,720,Sitting on the ground and writing in a notebook
+gmdcsa24_S2_ADL_20,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/20.mp4,S2,S2_ADL,ADL,11.665,15.002,1280,720,Standing up; picking up a water bottle; and drinking water while sitting on the ground
+gmdcsa24_S2_ADL_21,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/21.mp4,S2,S2_ADL,ADL,10.529,15.006,1280,720,Picking up a pen from the ground and walking
+gmdcsa24_S2_ADL_22,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/22.mp4,S2,S2_ADL,ADL,12.129,15.005,1280,720,Exercising (Push-up) and sitting
+gmdcsa24_S2_ADL_23,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/ADL/23.mp4,S2,S2_ADL,ADL,7.28,14.972,640,480,Eating biscuits while sitting on the bed with legs folded
+gmdcsa24_S2_Fall_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/01.mp4,S2,S2_Fall,FALL,6.368,29.836,1280,720,Right side fall on the ground
+gmdcsa24_S2_Fall_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/02.mp4,S2,S2_Fall,FALL,8.448,29.83,1280,720,Right side fall on the ground after walking
+gmdcsa24_S2_Fall_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/03.mp4,S2,S2_Fall,FALL,7.042,29.823,1280,720,Forward fall on the bed
+gmdcsa24_S2_Fall_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/04.mp4,S2,S2_Fall,FALL,10.21,29.874,1280,720,Seeing outside the window then backward fall
+gmdcsa24_S2_Fall_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/05.mp4,S2,S2_Fall,FALL,4.528,29.814,1280,720,Left side fall (face hidden by hand)
+gmdcsa24_S2_Fall_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/06.mp4,S2,S2_Fall,FALL,6.496,29.864,1280,720,Walking while seeing the mobile phone then fall backward (left hand not fully in the frame)
+gmdcsa24_S2_Fall_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/07.mp4,S2,S2_Fall,FALL,4.528,29.814,1280,720,Falling (forward) after trying to pick the bottle from the ground
+gmdcsa24_S2_Fall_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/08.mp4,S2,S2_Fall,FALL,6.064,29.847,1280,720,Reading a newspaper in the sitting position on the ground then falling backward
+gmdcsa24_S2_Fall_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/09.mp4,S2,S2_Fall,FALL,5.6,29.821,1280,720,Falling backward after walking
+gmdcsa24_S2_Fall_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/10.mp4,S2,S2_Fall,FALL,11.138,14.994,1280,720,Right side fall then backward
+gmdcsa24_S2_Fall_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/11.mp4,S2,S2_Fall,FALL,10.593,15.009,1280,720,Falling from bed to ground
+gmdcsa24_S2_Fall_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/12.mp4,S2,S2_Fall,FALL,12.257,15.011,640,480,Drinking water from the water bottle then falling backwards
+gmdcsa24_S2_Fall_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/13.mp4,S2,S2_Fall,FALL,8.896,14.951,640,480,Falling backward (side view)
+gmdcsa24_S2_Fall_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/14.mp4,S2,S2_Fall,FALL,11.201,14.998,640,480,Falling backward on the bed
+gmdcsa24_S2_Fall_15,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/15.mp4,S2,S2_Fall,FALL,11.665,29.832,1280,720,Writing while sitting on the bed; then falling on the ground
+gmdcsa24_S2_Fall_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/16.mp4,S2,S2_Fall,FALL,4.017,29.87,1280,720,Walking then falling forward
+gmdcsa24_S2_Fall_17,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/17.mp4,S2,S2_Fall,FALL,6.497,29.858,1280,720,Walking then falling forward
+gmdcsa24_S2_Fall_18,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/18.mp4,S2,S2_Fall,FALL,11.554,29.861,1280,720,Picking a water bottle from the ground and drinking water from it then falling forward on the ground
+gmdcsa24_S2_Fall_19,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/19.mp4,S2,S2_Fall,FALL,15.521,29.83,1280,720,Eating in standing position then falling forward
+gmdcsa24_S2_Fall_20,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/20.mp4,S2,S2_Fall,FALL,11.458,29.849,1280,720,Eating in standing position then falling forward
+gmdcsa24_S2_Fall_21,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/21.mp4,S2,S2_Fall,FALL,9.49,29.822,1280,720,Standing then falling sideways
+gmdcsa24_S2_Fall_22,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/22.mp4,S2,S2_Fall,FALL,5.201,29.8,1280,720,Walking then falling forward
+gmdcsa24_S2_Fall_23,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/23.mp4,S2,S2_Fall,FALL,7.538,29.849,1280,720,Standing then falling sideways
+gmdcsa24_S2_Fall_24,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/24.mp4,S2,S2_Fall,FALL,7.137,29.843,1280,720,Standing from the bed and then falling sideways on the ground
+gmdcsa24_S2_Fall_25,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 2/Fall/25.mp4,S2,S2_Fall,FALL,7.298,29.872,1280,720,Standing then falling backward on the ground
+gmdcsa24_S3_ADL_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/01.mp4,S3,S3_ADL,ADL,8.754,29.817,1280,720,Writing something in the notebook while sitting on the bed
+gmdcsa24_S3_ADL_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/02.mp4,S3,S3_ADL,ADL,9.138,29.877,1280,720,Exercise (Hand up & down)
+gmdcsa24_S3_ADL_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/03.mp4,S3,S3_ADL,ADL,9.922,29.833,1280,720,Getting up from the sleeping position from the bed; Putting a mask on the face; then walking
+gmdcsa24_S3_ADL_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/04.mp4,S3,S3_ADL,ADL,10.05,29.852,1280,720,Picking a book from the floor and putting it on the bed; sitting on the bed
+gmdcsa24_S3_ADL_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/05.mp4,S3,S3_ADL,ADL,5.169,29.791,1280,720,Exercising (hand down & up with body bending)
+gmdcsa24_S3_ADL_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/06.mp4,S3,S3_ADL,ADL,8.945,29.848,1280,720,Exercising then sitting down on the floor
+gmdcsa24_S3_ADL_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/07.mp4,S3,S3_ADL,ADL,3.345,29.891,1280,720,Exercising (sitting and standing)
+gmdcsa24_S3_ADL_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/08.mp4,S3,S3_ADL,ADL,4.896,29.819,1280,720,Sitting to sleeping on the floor
+gmdcsa24_S3_ADL_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/09.mp4,S3,S3_ADL,ADL,7.776,29.836,1280,720,Sleeping on the floor to sitting and then standing
+gmdcsa24_S3_ADL_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/10.mp4,S3,S3_ADL,ADL,12.434,29.839,1280,720,Opening the window curtain and the window
+gmdcsa24_S3_ADL_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/11.mp4,S3,S3_ADL,ADL,12.082,29.88,1280,720,Closing the window curtain and the window
+gmdcsa24_S3_ADL_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/12.mp4,S3,S3_ADL,ADL,10.673,14.991,1280,720,Changing pages of a book while sitting on the bed; standing
+gmdcsa24_S3_ADL_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/13.mp4,S3,S3_ADL,ADL,8.642,15.044,1280,720,Sitting on the floor
+gmdcsa24_S3_ADL_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/14.mp4,S3,S3_ADL,ADL,8.866,15.002,1280,720,Sitting on the floor & drinking water from the water bottle
+gmdcsa24_S3_ADL_15,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/15.mp4,S3,S3_ADL,ADL,7.665,15.003,1280,720,Reading newspaper while sitting on the floor
+gmdcsa24_S3_ADL_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/16.mp4,S3,S3_ADL,ADL,10.257,29.833,1280,720,Eating while sitting on the ground
+gmdcsa24_S3_ADL_17,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/17.mp4,S3,S3_ADL,ADL,12.129,15.005,1280,720,Drinking water from a water bottle while sitting on the bed Putting the water bottle on the bed
+gmdcsa24_S3_ADL_18,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/18.mp4,S3,S3_ADL,ADL,11.121,15.016,640,480,Walking; sitting on the bed and eating biscuits
+gmdcsa24_S3_ADL_19,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/19.mp4,S3,S3_ADL,ADL,6.513,15.046,640,480,Picking the pen from the floor and putting it on the bed
+gmdcsa24_S3_ADL_20,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/20.mp4,S3,S3_ADL,ADL,9.393,15.011,640,480,Talking on the phone while sitting on the bed
+gmdcsa24_S3_ADL_21,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/21.mp4,S3,S3_ADL,ADL,10.225,29.828,1280,720,Drinking while sitting on the bed
+gmdcsa24_S3_ADL_22,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/ADL/22.mp4,S3,S3_ADL,ADL,9.49,29.822,1280,720,Writing while sitting on the bed
+gmdcsa24_S3_Fall_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/01.mp4,S3,S3_Fall,FALL,3.809,29.925,1280,720,falling forward
+gmdcsa24_S3_Fall_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/02.mp4,S3,S3_Fall,FALL,6.562,29.87,1280,720,Falling on the bed (forward)
+gmdcsa24_S3_Fall_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/03.mp4,S3,S3_Fall,FALL,5.602,29.813,1280,720,Falling backward on the floor
+gmdcsa24_S3_Fall_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/04.mp4,S3,S3_Fall,FALL,5.458,29.867,1280,720,Walking and then falling backward on the floor
+gmdcsa24_S3_Fall_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/05.mp4,S3,S3_Fall,FALL,10.049,29.853,1280,720,Falling slowly from standing position to the floor
+gmdcsa24_S3_Fall_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/06.mp4,S3,S3_Fall,FALL,5.554,29.89,1280,720,Falling (backward) on the floor from the sitting position
+gmdcsa24_S3_Fall_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/07.mp4,S3,S3_Fall,FALL,9.025,29.805,1280,720,Falling on the floor from the standing position
+gmdcsa24_S3_Fall_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/08.mp4,S3,S3_Fall,FALL,6.337,29.35,1280,720,Falling on the right side onto the floor from a standing position
+gmdcsa24_S3_Fall_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/09.mp4,S3,S3_Fall,FALL,6.224,29.883,1280,720,Reading the book while sitting on the ground; then falling backward
+gmdcsa24_S3_Fall_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/10.mp4,S3,S3_Fall,FALL,4.386,29.871,1280,720,Falling forward on the bed
+gmdcsa24_S3_Fall_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/11.mp4,S3,S3_Fall,FALL,8.946,29.847,1280,720,Eating in standing position then falling forward
+gmdcsa24_S3_Fall_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/12.mp4,S3,S3_Fall,FALL,4.256,29.839,1280,720,Falling backward from the bed
+gmdcsa24_S3_Fall_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/13.mp4,S3,S3_Fall,FALL,4.048,29.89,1280,720,Writing something in a notebook while sitting position on the floor; then falling backward
+gmdcsa24_S3_Fall_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/14.mp4,S3,S3_Fall,FALL,12.306,29.824,1280,720,Falling backward on the floor while removing the shirt and trying to hang it on the hangar
+gmdcsa24_S3_Fall_15,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/15.mp4,S3,S3_Fall,FALL,5.65,15.045,1280,720,Trying to drink water from the water bottle and then falling on the floor
+gmdcsa24_S3_Fall_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/16.mp4,S3,S3_Fall,FALL,6.08,14.966,1280,720,Walking and then falling left side on the floor
+gmdcsa24_S3_Fall_17,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/17.mp4,S3,S3_Fall,FALL,8.513,15.035,1280,720,Reading newspaper then falling Backward on the bed
+gmdcsa24_S3_Fall_18,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/18.mp4,S3,S3_Fall,FALL,11.874,14.991,1280,720,Sitting on the bed; then falling on the floor
+gmdcsa24_S3_Fall_19,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/19.mp4,S3,S3_Fall,FALL,5.714,15.052,640,480,Falling on the floor from the standing position
+gmdcsa24_S3_Fall_20,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/20.mp4,S3,S3_Fall,FALL,6.241,15.061,640,480,Walking then falling forward on the floor
+gmdcsa24_S3_Fall_21,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 3/Fall/21.mp4,S3,S3_Fall,FALL,9.17,29.881,1280,720,Drinking in standing position then falling sideways
+gmdcsa24_S4_ADL_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/01.mp4,S4,S4_ADL,ADL,12.401,29.835,1280,720,Wiping the face with a handkerchief while sitting on the bed; cleaning the goggles and putting them on
+gmdcsa24_S4_ADL_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/02.mp4,S4,S4_ADL,ADL,10.561,29.825,1280,720,Talking on the mobile phone while walking
+gmdcsa24_S4_ADL_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/03.mp4,S4,S4_ADL,ADL,8.946,29.847,1280,720,Reading a book while sitting on the bed
+gmdcsa24_S4_ADL_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/04.mp4,S4,S4_ADL,ADL,13.009,29.824,1280,720,Using a laptop while sitting on the bed
+gmdcsa24_S4_ADL_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/05.mp4,S4,S4_ADL,ADL,7.362,29.885,1280,720,Doing exercise (push-up); view 1
+gmdcsa24_S4_ADL_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/06.mp4,S4,S4_ADL,ADL,6.578,29.798,1280,720,Doing exercise (push-up); view 2
+gmdcsa24_S4_ADL_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/07.mp4,S4,S4_ADL,ADL,4.993,29.839,1280,720,Doing exercise (push-up); view 3
+gmdcsa24_S4_ADL_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/08.mp4,S4,S4_ADL,ADL,12.338,29.828,1280,720,Sleeping to sitting; putting on the goggles and drinking water
+gmdcsa24_S4_ADL_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/09.mp4,S4,S4_ADL,ADL,12.129,29.845,1280,720,Reading a book and checking the mobile phone while sitting on the bed
+gmdcsa24_S4_ADL_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/10.mp4,S4,S4_ADL,ADL,12.801,29.841,1280,720,Walking then sleeping on the bed after removing the goggles
+gmdcsa24_S4_ADL_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/11.mp4,S4,S4_ADL,ADL,10.721,29.847,1280,720,Copying content from a book into a notebook while sitting on the floor
+gmdcsa24_S4_ADL_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/12.mp4,S4,S4_ADL,ADL,8.609,29.851,1280,720,Stopping copying from a book and drinking water while sitting on the floor
+gmdcsa24_S4_ADL_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/13.mp4,S4,S4_ADL,ADL,5.49,29.875,1280,720,Writing while sitting on the chair
+gmdcsa24_S4_ADL_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/14.mp4,S4,S4_ADL,ADL,8.306,29.859,1280,720,Sitting in the chair to standing on the floor; then picking up the water bottle and drinking water from it
+gmdcsa24_S4_ADL_15,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/15.mp4,S4,S4_ADL,ADL,5.33,29.834,1280,720,Sitting to sleeping on the bed
+gmdcsa24_S4_ADL_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/16.mp4,S4,S4_ADL,ADL,7.138,29.842,1280,720,Sitting on the bed; removing the goggles; then sleeping
+gmdcsa24_S4_ADL_17,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/17.mp4,S4,S4_ADL,ADL,6.225,29.878,1280,720,Picking up the book from the floor and putting it on the bed
+gmdcsa24_S4_ADL_18,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/18.mp4,S4,S4_ADL,ADL,14.097,29.864,640,480,Wiping the face with a handkerchief; putting on the goggles; then reading a book
+gmdcsa24_S4_ADL_19,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/19.mp4,S4,S4_ADL,ADL,9.905,29.883,640,480,Walking; then picking up the biscuit jar and eating biscuits from it after sitting on the bed
+gmdcsa24_S4_ADL_20,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/ADL/20.mp4,S4,S4_ADL,ADL,17.521,29.849,640,480,Eating biscuits then picking up the water bottle from the floor and drinking the water from it after sitting on the bed; keeping the bottle on the floor
+gmdcsa24_S4_Fall_01,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/01.mp4,S4,S4_Fall,FALL,4.657,29.844,640,480,Standing on the bed to falling (LS) on the bed
+gmdcsa24_S4_Fall_02,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/02.mp4,S4,S4_Fall,FALL,2.977,29.892,640,480,Falling (LS) from the bed to the floor
+gmdcsa24_S4_Fall_03,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/03.mp4,S4,S4_Fall,FALL,6.706,29.826,640,480,Walking then falling (forward) view 1
+gmdcsa24_S4_Fall_04,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/04.mp4,S4,S4_Fall,FALL,4.722,29.863,1280,720,Walking then falling (forward) view 2
+gmdcsa24_S4_Fall_05,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/05.mp4,S4,S4_Fall,FALL,7.41,29.826,1280,720,Falling (RS) on the bed from sitting on the bed
+gmdcsa24_S4_Fall_06,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/06.mp4,S4,S4_Fall,FALL,6.13,29.855,1280,720,Falling (LS) on the bed from sitting on the bed then falling (RS) to the floor
+gmdcsa24_S4_Fall_07,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/07.mp4,S4,S4_Fall,FALL,6.305,29.817,1280,720,Walking then falling (LS) on the floor
+gmdcsa24_S4_Fall_08,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/08.mp4,S4,S4_Fall,FALL,6.258,29.884,1280,720,Falling backward on the bed from sitting on the bed
+gmdcsa24_S4_Fall_09,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/09.mp4,S4,S4_Fall,FALL,6.066,29.84,1280,720,Falling backward on the bed from sitting on the bed
+gmdcsa24_S4_Fall_10,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/10.mp4,S4,S4_Fall,FALL,5.058,29.856,1280,720,Reading a book while sitting on the chair then falling (FW) on the ground
+gmdcsa24_S4_Fall_11,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/11.mp4,S4,S4_Fall,FALL,4.561,29.815,1280,720,Walking then falling (FW: only waist to toe is visible after falling)
+gmdcsa24_S4_Fall_12,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/12.mp4,S4,S4_Fall,FALL,4.625,29.836,1280,720,Falling (FW)to the floor from sitting on the bed
+gmdcsa24_S4_Fall_13,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/13.mp4,S4,S4_Fall,FALL,4.993,29.84,1280,720,Falling (sideways) on the bed from sitting on the bed
+gmdcsa24_S4_Fall_14,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/14.mp4,S4,S4_Fall,FALL,5.25,29.907,1280,720,Falling (RS) on the bed from sitting on the bed then falling (LS) to the floor
+gmdcsa24_S4_Fall_16,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/16.mp4,S4,S4_Fall,FALL,7.106,29.835,1280,720,Walking then falling (FW) on the floor
+gmdcsa24_S4_Fall_17,gmdcsa24,data/raw/public_datasets/GMDCSA24/Subject 4/Fall/17.mp4,S4,S4_Fall,FALL,6.929,29.873,1280,720,Falling (LS) on the bed from sitting on the bed

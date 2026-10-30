@@ -1,0 +1,11 @@
+{
+  "videos": 159,
+  "sampled_frames": 19178,
+  "frames_with_person": 17782,
+  "frame_coverage": 0.9272,
+  "videos_with_coverage_below_80pct": 25,
+  "primary_person_mean_visible_keypoints": 15.14,
+  "primary_person_frames_with_at_least_7_keypoints": 0.9901,
+  "mean_extra_track_ids_per_video": 0.86,
+  "note": "No keypoint ground truth exists for GMDCSA-24, so this is detection coverage, not keypoint accuracy."
+}

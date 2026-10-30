@@ -1,0 +1,277 @@
+{
+  "name": "SentinelAI posture classifier",
+  "version": "2026-10-29T18:42:28+00:00",
+  "model_type": "Random Forest",
+  "hyperparameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "class_weight": "balanced_subsample",
+    "criterion": "gini",
+    "max_depth": null,
+    "max_features": "sqrt",
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 3,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 200,
+    "n_jobs": 1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "training_data": {
+    "datasets": [
+      "gmdcsa24"
+    ],
+    "subjects": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "frames": 10130,
+    "videos": 145,
+    "class_counts": {
+      "SITTING": 5534,
+      "LYING": 632,
+      "STANDING": 3964
+    }
+  },
+  "input": {
+    "feature_format": "FRAME_FEATURES from src/analysis/features.py",
+    "features": [
+      "torso_angle",
+      "body_angle",
+      "aspect_ratio",
+      "hip_angle",
+      "knee_angle",
+      "dy_shoulder_hip",
+      "dy_hip_knee",
+      "dy_hip_ankle",
+      "dy_head_hip",
+      "dx_shoulder_hip",
+      "torso_len",
+      "thigh_ratio",
+      "shin_ratio",
+      "shoulder_width_ratio",
+      "hip_rel_y",
+      "head_rel_y",
+      "visible_frac",
+      "mean_kpt_score"
+    ],
+    "pose_model": "artifacts/pose_estimation/yolo11n-pose.onnx",
+    "keypoint_conf": 0.35
+  },
+  "label_mapping": {
+    "STANDING": "dataset Standing + Walking",
+    "SITTING": "dataset Sitting",
+    "LYING": "dataset Sleeping (lying on a bed)"
+  },
+  "evaluation": {
+    "protocol": "leave-one-subject-out (4 folds), pooled over folds",
+    "selected": {
+      "accuracy": 0.9762,
+      "macro_f1": 0.9645,
+      "per_class": {
+        "LYING": {
+          "precision": 0.9352,
+          "recall": 0.9367,
+          "f1-score": 0.936,
+          "support": 632.0
+        },
+        "SITTING": {
+          "precision": 0.9827,
+          "recall": 0.9756,
+          "f1-score": 0.9791,
+          "support": 5534.0
+        },
+        "STANDING": {
+          "precision": 0.9738,
+          "recall": 0.9834,
+          "f1-score": 0.9785,
+          "support": 3964.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "matrix": [
+          [
+            592,
+            29,
+            11
+          ],
+          [
+            41,
+            5399,
+            94
+          ],
+          [
+            0,
+            66,
+            3898
+          ]
+        ]
+      },
+      "predicted_other_labels": {}
+    },
+    "baseline_rules": {
+      "accuracy": 0.7992,
+      "macro_f1": 0.8332,
+      "per_class": {
+        "LYING": {
+          "precision": 0.7659,
+          "recall": 0.9525,
+          "f1-score": 0.8491,
+          "support": 632.0
+        },
+        "SITTING": {
+          "precision": 0.9909,
+          "recall": 0.7111,
+          "f1-score": 0.828,
+          "support": 5534.0
+        },
+        "STANDING": {
+          "precision": 0.7588,
+          "recall": 0.8978,
+          "f1-score": 0.8225,
+          "support": 3964.0
+        }
+      },
+      "confusion_matrix": {
+        "labels": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "matrix": [
+          [
+            602,
+            22,
+            0
+          ],
+          [
+            80,
+            3935,
+            1131
+          ],
+          [
+            104,
+            14,
+            3559
+          ]
+        ]
+      },
+      "predicted_other_labels": {
+        "UNKNOWN": 389,
+        "BENDING": 290,
+        "KNEELING": 4
+      }
+    },
+    "all_candidates": {
+      "rules": {
+        "accuracy": 0.7992,
+        "macro_f1": 0.8332
+      },
+      "rf": {
+        "accuracy": 0.9762,
+        "macro_f1": 0.9645
+      },
+      "hgb": {
+        "accuracy": 0.9695,
+        "macro_f1": 0.9493
+      }
+    },
+    "folds": [
+      {
+        "test_subject": "S1",
+        "n_train": 8614,
+        "n_test": 1516,
+        "rules_macro_f1": 0.9151,
+        "rf_macro_f1": 0.9871,
+        "hgb_macro_f1": 0.9866
+      },
+      {
+        "test_subject": "S2",
+        "n_train": 6892,
+        "n_test": 3238,
+        "rules_macro_f1": 0.7604,
+        "rf_macro_f1": 0.8825,
+        "hgb_macro_f1": 0.9164
+      },
+      {
+        "test_subject": "S3",
+        "n_train": 7330,
+        "n_test": 2800,
+        "rules_macro_f1": 0.8642,
+        "rf_macro_f1": 0.9583,
+        "hgb_macro_f1": 0.8624
+      },
+      {
+        "test_subject": "S4",
+        "n_train": 7554,
+        "n_test": 2576,
+        "rules_macro_f1": 0.7444,
+        "rf_macro_f1": 0.9928,
+        "hgb_macro_f1": 0.9878
+      }
+    ],
+    "unknown_threshold_curve": [
+      {
+        "threshold": 0.0,
+        "coverage": 1.0,
+        "accuracy_on_kept": 0.9762
+      },
+      {
+        "threshold": 0.4,
+        "coverage": 0.9996,
+        "accuracy_on_kept": 0.9766
+      },
+      {
+        "threshold": 0.5,
+        "coverage": 0.997,
+        "accuracy_on_kept": 0.978
+      },
+      {
+        "threshold": 0.6,
+        "coverage": 0.9762,
+        "accuracy_on_kept": 0.9853
+      },
+      {
+        "threshold": 0.7,
+        "coverage": 0.9579,
+        "accuracy_on_kept": 0.9895
+      },
+      {
+        "threshold": 0.8,
+        "coverage": 0.9327,
+        "accuracy_on_kept": 0.9942
+      }
+    ]
+  },
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "limitations": [
+    "Only STANDING, SITTING and LYING are learned; BENDING and KNEELING come from the rule baseline.",
+    "4 adult subjects in 3 rooms, camera 64-135 cm high; robot-height views were not in the data.",
+    "LYING examples are people lying on a bed; lying on the floor was not labelled separately.",
+    "Frame-level samples within one video are highly correlated, so the effective sample size is much smaller than the frame count."
+  ],
+  "registry_version": "v1-initial"
+}

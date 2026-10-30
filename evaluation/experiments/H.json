@@ -1,0 +1,111 @@
+{
+  "experiment": "H",
+  "created": "2026-10-30T02:37:26+00:00",
+  "seconds": 8.4,
+  "quick": false,
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "result": {
+    "posture_by_lighting": {
+      "day_dim": {
+        "accuracy": 0.9953,
+        "macro_f1": 0.9869,
+        "f1_LYING": 0.9637,
+        "f1_SITTING": 0.997,
+        "f1_STANDING": 1.0,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 1487,
+        "videos": 16
+      },
+      "day_lit": {
+        "accuracy": 0.9791,
+        "macro_f1": 0.9754,
+        "f1_LYING": 0.9658,
+        "f1_SITTING": 0.9789,
+        "f1_STANDING": 0.9816,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 6216,
+        "videos": 100
+      },
+      "night": {
+        "accuracy": 0.965,
+        "macro_f1": 0.817,
+        "f1_LYING": 0.5067,
+        "f1_SITTING": 0.972,
+        "f1_STANDING": 0.9725,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 2427,
+        "videos": 29
+      }
+    },
+    "fall_by_lighting": {
+      "day_dim": {
+        "videos": 18,
+        "fall_events": 6,
+        "minutes": 2.6,
+        "FALL_SUSPECTED": {
+          "missed": 0,
+          "recall": 1.0,
+          "false_alarms": 3
+        },
+        "FALL_CONFIRMED": {
+          "missed": 1,
+          "recall": 0.833,
+          "false_alarms": 3
+        }
+      },
+      "day_lit": {
+        "videos": 112,
+        "fall_events": 61,
+        "minutes": 14.0,
+        "FALL_SUSPECTED": {
+          "missed": 2,
+          "recall": 0.967,
+          "false_alarms": 7
+        },
+        "FALL_CONFIRMED": {
+          "missed": 11,
+          "recall": 0.82,
+          "false_alarms": 4
+        }
+      },
+      "night": {
+        "videos": 29,
+        "fall_events": 12,
+        "minutes": 4.7,
+        "FALL_SUSPECTED": {
+          "missed": 3,
+          "recall": 0.75,
+          "false_alarms": 3
+        },
+        "FALL_CONFIRMED": {
+          "missed": 4,
+          "recall": 0.667,
+          "false_alarms": 3
+        }
+      }
+    },
+    "note": "lighting from the dataset's 'Time of Recording' column; groups are small - differences of a few points are not significant"
+  }
+}

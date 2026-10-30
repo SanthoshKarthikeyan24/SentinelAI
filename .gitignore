@@ -1,0 +1,27 @@
+# --- Python / tools
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.vscode/
+.idea/
+*.tmp
+*.part
+
+# --- private / machine-specific (never publish)
+**/secrets.h
+**/secret.h
+.env
+config/robot_last_host.txt
+logs/
+evaluation/communication/comm_test_*.json
+
+# --- large / regenerable data (download with training/download_datasets.py)
+data/raw/public_datasets/
+data/raw/collected_videos/
+data/processed/temporal_sequences/
+
+# --- OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store

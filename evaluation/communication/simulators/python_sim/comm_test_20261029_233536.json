@@ -1,0 +1,220 @@
+{
+  "host": "127.0.0.1",
+  "port": 39847,
+  "started": "2026-10-29T23:35:29",
+  "steps": [
+    {
+      "step": "1 connect + HELLO",
+      "passed": true,
+      "hello": "EVT:HELLO:SENTINEL:2:IDLE:0:0"
+    },
+    {
+      "step": "2 PING acknowledgements",
+      "passed": true,
+      "sent": 200,
+      "acknowledged": 200,
+      "success_rate": 1.0,
+      "latency": {
+        "n": 200,
+        "mean_ms": 0.08,
+        "median_ms": 0.07,
+        "p95_ms": 0.1,
+        "max_ms": 0.71
+      }
+    },
+    {
+      "step": "3 STOP acknowledged",
+      "passed": true,
+      "reply": "OK:201:STOP",
+      "latency_ms": 0.07
+    },
+    {
+      "step": "4 invalid commands rejected (and link still usable)",
+      "passed": true,
+      "cases": 8,
+      "replies": [
+        {
+          "sent": "hello",
+          "reply": "ERR:0:BAD_FORMAT"
+        },
+        {
+          "sent": "JUMP",
+          "reply": "ERR:202:UNKNOWN_CMD"
+        },
+        {
+          "sent": "FORWARD:150:300",
+          "reply": "ERR:203:BAD_ARG"
+        },
+        {
+          "sent": "FORWARD:30:99999",
+          "reply": "ERR:204:BAD_ARG"
+        },
+        {
+          "sent": "PING:extra",
+          "reply": "ERR:205:BAD_ARG"
+        },
+        {
+          "sent": "RESET",
+          "reply": "ERR:206:NEEDS_CONFIRM"
+        },
+        {
+          "sent": "1:PING (stale seq)",
+          "reply": "ERR:1:BAD_SEQ"
+        },
+        {
+          "sent": "80-char line",
+          "reply": "ERR:0:TOO_LONG"
+        }
+      ]
+    },
+    {
+      "step": "5 movement accepted and ends by itself",
+      "passed": true,
+      "reply": "OK:208:FORWARD:30",
+      "move_done_after_ms": 300.6
+    },
+    {
+      "step": "6 watchdog stops motion when the laptop goes silent",
+      "passed": true,
+      "stopped_after_ms": 503.0,
+      "expected_ms": 500,
+      "status": {
+        "state": "IDLE",
+        "left": 0,
+        "right": 0,
+        "watchdog_trips": 1,
+        "uptime_s": 0,
+        "motors_enabled": false,
+        "protocol": 2,
+        "follow": false,
+        "obstacle": false,
+        "distance_cm": -1,
+        "led": "OFF",
+        "buzzer": "OFF"
+      }
+    },
+    {
+      "step": "7 dropped connection stops motion",
+      "passed": true,
+      "hello_after_reconnect": "EVT:HELLO:SENTINEL:2:IDLE:0:0",
+      "status": {
+        "state": "IDLE",
+        "left": 0,
+        "right": 0,
+        "watchdog_trips": 1,
+        "uptime_s": 1,
+        "motors_enabled": false,
+        "protocol": 2,
+        "follow": false,
+        "obstacle": false,
+        "distance_cm": -1,
+        "led": "OFF",
+        "buzzer": "OFF"
+      }
+    },
+    {
+      "step": "8 emergency latches, blocks movement, needs RESET:CONFIRM",
+      "passed": true,
+      "fall_ack_ms": 0.06,
+      "replies": [
+        "OK:2:FALL",
+        "ERR:4:EMERGENCY_ACTIVE",
+        "OK:5:MUTE",
+        "ERR:6:NEEDS_CONFIRM",
+        "OK:8:RESET"
+      ],
+      "state_after_reset": "IDLE"
+    },
+    {
+      "step": "9 FALL handled behind a burst of 20 messages",
+      "passed": true,
+      "fall_ack_ms": 0.27,
+      "replies_before_fall_ack": 20,
+      "reset": "OK:31:RESET"
+    },
+    {
+      "step": "10 LED commands ON / SLOW / FAST / OFF",
+      "passed": true,
+      "replies": [
+        "OK:32:LED:ON",
+        "OK:34:LED:SLOW",
+        "OK:36:LED:FAST",
+        "OK:38:LED:OFF"
+      ],
+      "note": "watch the red LED (or nothing, if not wired yet)"
+    },
+    {
+      "step": "11 buzzer BEEP / DOUBLE / ALARM / OFF, MUTE silences",
+      "passed": true,
+      "replies": [
+        "OK:40:BUZZER:BEEP",
+        "OK:41:BUZZER:DOUBLE",
+        "OK:42:BUZZER:ALARM",
+        "OK:44:BUZZER:OFF",
+        "OK:47:MUTE"
+      ]
+    },
+    {
+      "step": "12 DRIVE left/right speeds, clamp, range check, expiry",
+      "passed": true,
+      "replies": [
+        "OK:49:DRIVE:30:-30",
+        "OK:50:DRIVE:60:60",
+        "ERR:51:BAD_ARG",
+        "OK:52:DRIVE:0:0"
+      ],
+      "firmware_max_speed": 60,
+      "move_done_after_ms": 301.0
+    },
+    {
+      "step": "13 FOLLOW:START / FOLLOW:STOP, STOP ends following",
+      "passed": true,
+      "replies": [
+        "OK:54:FOLLOW:START",
+        "OK:55:PING:IDLE:F",
+        "OK:57:FOLLOW:STOP",
+        "OK:58:PING:IDLE:-",
+        "OK:59:FOLLOW:START",
+        "OK:60:STOP"
+      ],
+      "note": "one beep at FOLLOW:START, LED blinks slowly while following"
+    },
+    {
+      "step": "14 OBSTACLE blocks forward (not reverse), CLEAR and 1.5 s hold expiry",
+      "passed": true,
+      "replies": [
+        "OK:63:OBSTACLE:40",
+        "OK:64:PING:IDLE:O",
+        "ERR:65:OBSTACLE_AHEAD",
+        "OK:66:BACK:20",
+        "OK:67:CLEAR",
+        "EVT:OBSTACLE_CLEAR",
+        "OK:68:OBSTACLE:0",
+        "EVT:OBSTACLE_CLEAR"
+      ],
+      "hold_expired_after_ms": 1501.6,
+      "note": "double beep + fast LED blink at each new obstacle"
+    },
+    {
+      "step": "15 RobotClient heartbeat, emergency and reset",
+      "passed": true,
+      "heartbeat_seconds": 3.0,
+      "heartbeats_acknowledged": 19,
+      "timeouts": 0,
+      "rtt_mean_ms": 0.3,
+      "rtt_p95_ms": 0.4,
+      "emergency_ack_ms": 5.4,
+      "move_blocked_reason": "emergency active - movement blocked until reset",
+      "move_after_reset": "sent"
+    }
+  ],
+  "robot": {
+    "protocol": 2,
+    "state": "IDLE",
+    "motors_enabled": false,
+    "sensor_enabled": false
+  },
+  "motors_enabled": false,
+  "finished": "2026-10-29T23:35:36",
+  "all_passed": true
+}

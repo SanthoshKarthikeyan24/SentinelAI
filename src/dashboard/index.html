@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SentinelAI Monitor</title>
+<style>
+  :root { --bg:#0f1419; --panel:#1a2129; --line:#2a333d; --text:#e6e9ec; --muted:#8b96a3;
+          --ok:#3fb950; --warn:#d29922; --bad:#f85149; --accent:#58a6ff; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.45 system-ui, "Segoe UI", sans-serif; background:var(--bg); color:var(--text); }
+  header { display:flex; align-items:center; gap:10px; padding:10px 16px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  header h1 { font-size:17px; margin:0; font-weight:600; }
+  .pill { padding:2px 10px; border-radius:999px; font-size:12px; background:var(--panel); border:1px solid var(--line); }
+  .pill.ok { color:var(--ok); } .pill.warn { color:var(--warn); } .pill.bad { color:var(--bad); }
+  main { display:grid; grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); gap:16px; padding:16px; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  .col { display:grid; gap:16px; align-content:start; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px; }
+  .panel h2 { font-size:13px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin:0 0 8px; }
+  #videoWrap { position:relative; }
+  #video { width:100%; border-radius:6px; background:#000; display:block; min-height:200px; }
+  #video.pick { cursor:crosshair; }
+  .stats { display:grid; grid-template-columns: repeat(5, 1fr); gap:8px; margin-top:10px; }
+  .stat { background:var(--bg); border-radius:6px; padding:8px; }
+  .stat b { display:block; font-size:18px; font-variant-numeric: tabular-nums; }
+  .stat span { color:var(--muted); font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:5px 6px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:500; }
+  .banner { display:none; margin:10px 16px 0; padding:12px 16px; border-radius:8px; color:#fff; font-weight:600;
+            align-items:center; gap:12px; }
+  .banner.show { display:flex; }
+  #banner { background:var(--bad); } #safetyBanner { background:#6e3b00; }
+  button { background:var(--accent); color:#04111f; border:0; padding:7px 12px; border-radius:6px;
+           font-weight:600; cursor:pointer; touch-action:none; user-select:none; }
+  button.secondary { background:var(--line); color:var(--text); }
+  button.danger { background:var(--bad); color:#fff; }
+  button:disabled { opacity:.4; cursor:not-allowed; }
+  .row { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .pad { display:grid; grid-template-columns: repeat(3, 56px); grid-template-rows: repeat(3, 44px); gap:6px; margin-top:8px; }
+  .pad button { padding:0; font-size:18px; }
+  .events { max-height:300px; overflow:auto; }
+  .muted { color:var(--muted); } .small { font-size:12px; }
+  .ok { color:var(--ok); } .warn { color:var(--warn); font-weight:600; } .bad { color:var(--bad); font-weight:700; }
+  .lvl { font-size:15px; font-weight:700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>SentinelAI</h1>
+  <span id="cam" class="pill">camera …</span>
+  <span id="modes" class="pill">models …</span>
+  <span id="load" class="pill">load …</span>
+  <span style="flex:1"></span>
+  <button class="secondary" onclick="resetAll()">Reset fall states</button>
+</header>
+<div id="banner" class="banner"><span id="bannerText">EMERGENCY</span><span style="flex:1"></span>
+  <button onclick="ackAll()">Acknowledge alert</button></div>
+<div id="safetyBanner" class="banner"><span id="safetyText"></span></div>
+<main>
+  <section class="col">
+    <div class="panel">
+      <h2>Camera</h2>
+      <div id="videoWrap"><img id="video" src="/video_feed" alt="live video"></div>
+      <div class="muted small" id="pickHint" style="margin-top:6px"></div>
+      <div class="stats">
+        <div class="stat"><b id="fps">–</b><span>processing FPS</span></div>
+        <div class="stat"><b id="inf">–</b><span>inference ms</span></div>
+        <div class="stat"><b id="lat">–</b><span>frame latency ms</span></div>
+        <div class="stat"><b id="people">–</b><span>people</span></div>
+        <div class="stat"><b id="frames">–</b><span>frames</span></div>
+      </div>
+      <p class="muted small" id="objects" style="margin:10px 0 0"></p>
+    </div>
+    <div class="panel">
+      <h2>People and fall assessment</h2>
+      <table><thead><tr><th>ID</th><th>Assessment</th><th>Posture</th><th>Keypoints</th><th>Fall state</th><th>Score</th><th></th></tr></thead>
+        <tbody id="persons"><tr><td colspan="7" class="muted">nobody detected</td></tr></tbody></table>
+      <p class="muted small" style="margin:8px 0 0">"Fall confirmed by model" is the AI's decision, not a medical
+        assessment. Always check on the person. SentinelAI cannot call emergency services.</p>
+    </div>
+    <div class="panel">
+      <h2>AI status</h2>
+      <div id="ai" class="small"></div>
+    </div>
+    <div class="panel">
+      <h2>Recent events</h2>
+      <div class="events"><table><thead><tr><th>Time</th><th>Event</th><th>ID</th><th>Reason</th></tr></thead>
+        <tbody id="events"></tbody></table></div>
+    </div>
+  </section>
+  <section class="col">
+    <div class="panel">
+      <h2>Safety</h2>
+      <div id="safety" class="muted">robot link disabled</div>
+    </div>
+    <div class="panel" id="emPanel">
+      <h2>Emergency</h2>
+      <div id="emergency" class="small muted">–</div>
+      <div class="row">
+        <button class="danger" id="estopBtn" onclick="robot('estop')">E-STOP</button>
+        <button class="secondary" onclick="robot('mute')">Mute buzzer</button>
+        <button class="secondary" id="clearBtn" onclick="clearEmergency()">Clear emergency…</button>
+      </div>
+    </div>
+    <div class="panel" id="robotPanel">
+      <h2>Robot (ESP32)</h2>
+      <div id="robot" class="small muted">robot link disabled (robot.enabled: false)</div>
+      <div class="row" id="linkRow">
+        <button class="secondary" id="connBtn" onclick="toggleConn()">Disconnect</button>
+        <button id="stopBtn" onclick="robot('stop')">STOP</button>
+        <button class="secondary" id="commBtn" onclick="robot('ack_comm_fault')" style="display:none">Acknowledge comm fault (STOP)</button>
+      </div>
+      <table style="margin-top:8px"><thead><tr><th></th><th>Commanded (laptop)</th><th>Reported (ESP32)</th></tr></thead>
+        <tbody id="cmpTable"></tbody></table>
+      <p class="muted small" style="margin:6px 0 0">"Reported" is what the firmware says it set on the motor driver,
+        LED and buzzer pins. It cannot sense wheel rotation.</p>
+    </div>
+    <div class="panel">
+      <h2>Manual control <span class="muted small">(press and hold)</span></h2>
+      <div class="pad">
+        <span></span><button data-dir="forward" title="forward">▲</button><span></span>
+        <button data-dir="left" title="turn left">◀</button>
+        <button class="danger" onclick="robot('stop')" title="stop">■</button>
+        <button data-dir="right" title="turn right">▶</button>
+        <span></span><button data-dir="backward" title="reverse">▼</button><span></span>
+      </div>
+      <div class="muted small" id="manualMsg" style="margin-top:6px">Each press sends a short command that expires
+        on the robot; releasing the button stops it.</div>
+      <div class="row">
+        <button class="secondary" onclick="robot('led_on')">LED on</button>
+        <button class="secondary" onclick="robot('led_blink')">LED blink</button>
+        <button class="secondary" onclick="robot('led_off')">LED off</button>
+        <button class="secondary" onclick="robot('buzzer_test')">Buzzer test</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Following</h2>
+      <div id="follow" class="small muted">–</div>
+      <div class="row">
+        <button class="secondary" id="pickBtn" onclick="togglePick()">Select person on video</button>
+        <button class="secondary" id="resumeBtn" onclick="robot('follow_resume')">Resume</button>
+        <button class="secondary" onclick="robot('follow_stop')">Stop following</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>Active alerts</h2>
+      <div id="alerts" class="muted">none</div>
+    </div>
+    <div class="panel"><div id="robotMsg" class="small muted">–</div></div>
+  </section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let S = {};
+let picking = false;
+async function post(url, body) {
+  const r = await fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body||{})});
+  let j = {}; try { j = await r.json(); } catch (e) {}
+  return j;
+}
+function ackAll() { post("/api/ack", {}).then(refresh); }
+function ack(id) { post("/api/ack", {alert_id:id}).then(refresh); }
+function resetAll() { post("/api/reset", {}).then(refresh); }
+async function robot(action, body, quiet) {
+  const j = await post("/api/robot/" + action, body);
+  if (!quiet || !j.ok) $("robotMsg").textContent = action + ": " + (j.ok ? (j.reply || "sent") : ("refused - " + (j.error || j.reply || "?")));
+  if (!quiet) refresh();
+  return j;
+}
+function clearEmergency() {
+  if (confirm("Clear the robot emergency?\n\nOnly do this after you have checked on the person and the area " +
+              "around the robot is safe. The motors stay stopped; following must be started again.")) {
+    robot("clear_emergency", {operator_confirmed: true});
+  }
+}
+function toggleConn() { robot(S.robot && S.robot.enabled ? "disconnect" : "connect"); }
+function togglePick() { picking = !picking; $("video").classList.toggle("pick", picking);
+  $("pickBtn").textContent = picking ? "Cancel selection" : "Select person on video";
+  $("pickHint").textContent = picking ? "Click on the person the robot should follow." : ""; }
+$("video").addEventListener("click", ev => {
+  if (!picking || !S.frame_size) return;
+  const img = $("video"), rect = img.getBoundingClientRect();
+  const x = (ev.clientX - rect.left) / rect.width * S.frame_size[0];
+  const y = (ev.clientY - rect.top) / rect.height * S.frame_size[1];
+  const hits = (S.persons || []).filter(p => p.box && x >= p.box[0] && x <= p.box[2] && y >= p.box[1] && y <= p.box[3]);
+  if (!hits.length) { $("pickHint").textContent = "No person there - click inside a person's box."; return; }
+  hits.sort((a, b) => (a.box[2]-a.box[0])*(a.box[3]-a.box[1]) - (b.box[2]-b.box[0])*(b.box[3]-b.box[1]));
+  togglePick();
+  robot("follow_select", {track_id: hits[0].track_id});
+});
+function follow(tid) { robot("follow_select", {track_id: tid}); }
+// press-and-hold: repeat every 150 ms while held; release = stop
+let holdTimer = null, inflight = Promise.resolve(), busy = false;
+function holdStart(dir) {
+  holdStop(false);
+  const send = () => {
+    if (busy) return;                     // never pile up requests
+    busy = true;
+    inflight = robot("manual", {direction: dir}, true).then(j => {
+      busy = false;
+      $("manualMsg").textContent = j.ok ? ("driving " + dir) : ("refused - " + j.error); });
+  };
+  send(); holdTimer = setInterval(send, 150);
+}
+function holdStop(sendStop) {
+  if (holdTimer) {
+    clearInterval(holdTimer); holdTimer = null;
+    // the stop is sent after the last motion request has been answered, so it can never be overtaken
+    if (sendStop !== false) inflight = inflight.then(() => robot("stop", {}, true));
+  }
+}
+document.querySelectorAll(".pad button[data-dir]").forEach(b => {
+  b.addEventListener("pointerdown", e => { e.preventDefault(); b.setPointerCapture(e.pointerId); holdStart(b.dataset.dir); });
+  ["pointerup", "pointercancel", "lostpointercapture"].forEach(n => b.addEventListener(n, () => holdStop()));
+});
+window.addEventListener("blur", () => holdStop());
+document.addEventListener("visibilitychange", () => { if (document.hidden) holdStop(); });
+
+const yes = v => v === true ? "yes" : v === false ? "no" : "–";
+function cmpRow(name, c, r) {
+  const same = String(c) === String(r);
+  return `<tr><td class="muted">${name}</td><td>${esc(c)}</td><td class="${r === "–" ? "muted" : (same ? "" : "warn")}">${esc(r)}</td></tr>`;
+}
+async function refresh() {
+  try {
+    const s = S = await (await fetch("/api/status")).json();
+    const cam = $("cam");
+    cam.textContent = `${s.camera.source}: ${s.camera.status}` + (s.camera.last_error ? ` (${s.camera.last_error})` : "");
+    cam.className = "pill " + (s.camera.status === "ok" ? "ok" : (s.camera.status === "ended" ? "warn" : "bad"));
+    $("modes").textContent = `posture: ${s.models.posture_mode} · fall: ${s.models.fall_mode}`;
+    const ld = s.system || {};
+    $("load").textContent = ld.cpu_percent != null ? `CPU ${ld.cpu_percent}% · RAM ${ld.memory_percent}% · app ${ld.process_memory_mb} MB` : "load: n/a";
+    $("fps").textContent = s.fps.toFixed(1);
+    $("inf").textContent = s.inference_ms.toFixed(0);
+    $("lat").textContent = s.frame_ms.toFixed(0);
+    $("people").textContent = s.persons.filter(p => p.box).length;
+    $("frames").textContent = s.frames_processed;
+    $("objects").textContent = s.objects.length ? "Objects: " + s.objects.map(o => `${o.class} (${o.score})`).join(", ") : "";
+    const m = s.models, v = m.versions || {};
+    $("ai").innerHTML = `Posture: <b>${esc(m.posture_mode)}</b> ${v.posture ? "· " + esc(v.posture) : ""}
+      ${m.posture_model_error ? "<br><span class='warn'>" + esc(m.posture_model_error) + "</span>" : ""}<br>
+      Fall: <b>${esc(m.fall_mode)}</b> ${v.fall ? "· " + esc(v.fall) : ""}
+      ${m.fall_model_error ? "<br><span class='warn'>" + esc(m.fall_model_error) + "</span>" : ""}<br>
+      Pose: ${esc(v.pose || "yolo11n-pose")} · objects: ${m.objects_enabled ? esc(v.objects || "yolo11n") : "off"}<br>
+      Runtime: ${esc((m.providers || []).join(", "))} · clips: ${s.clips && s.clips.enabled ? "ON" : "off"}`;
+    const fo = s.follow || {}, rb = s.robot || {};
+    const canFollow = rb.link_enabled && fo.available !== false;
+    $("persons").innerHTML = s.persons.length ? s.persons.map(p => p.box ?
+      `<tr><td>#${p.track_id}</td><td class="${p.assessment.startsWith('fall') ? 'bad' : (p.assessment.startsWith('possible') ? 'warn' : '')}">${esc(p.assessment)}</td>
+       <td>${esc(p.posture)} <span class="muted">${p.posture_confidence.toFixed(2)}</span></td>
+       <td>${Math.round(p.keypoint_reliability*100)}%</td><td>${esc(p.fall_state)}</td>
+       <td>${p.fall_score.toFixed(2)}</td>
+       <td>${canFollow ? `<button class="secondary" onclick="follow(${p.track_id})">follow</button>` : ""}</td></tr>` :
+      `<tr><td>#${p.track_id}</td><td class="warn">${esc(p.assessment)}</td><td colspan="5" class="muted">person in a fall state is no longer tracked</td></tr>`
+      ).join("") : `<tr><td colspan="7" class="muted">nobody detected</td></tr>`;
+    $("alerts").innerHTML = s.alerts_active.length ? s.alerts_active.map(a =>
+      `<div style="margin-bottom:6px"><b class="${a.severity==='emergency'?'bad':'warn'}">${a.severity.toUpperCase()}</b>
+       ${esc(a.message)} <button class="secondary" onclick="ack('${a.alert_id}')">ack</button></div>`).join("") : "none";
+    const em = s.alerts_active.find(a => a.severity === "emergency");
+    $("banner").classList.toggle("show", !!em);
+    if (em) $("bannerText").textContent = "EMERGENCY: " + em.message;
+    renderRobot(s, rb, fo);
+    if (s.error) { cam.textContent = "ERROR: " + s.error; cam.className = "pill bad"; }
+  } catch (e) { $("cam").textContent = "dashboard disconnected"; $("cam").className = "pill bad"; }
+  try {
+    const ev = await (await fetch("/api/events?n=40")).json();
+    $("events").innerHTML = ev.map(e => `<tr><td class="muted">${esc(e.timestamp.slice(11,19))}</td>
+      <td>${esc(e.event_type)}</td><td>${e.track_id ?? ""}</td><td class="muted">${esc(e.reason)}</td></tr>`).join("");
+  } catch (e) {}
+}
+function renderRobot(s, rb, fo) {
+  const on = !!rb.link_enabled;
+  ["estopBtn", "clearBtn", "stopBtn", "connBtn", "pickBtn", "resumeBtn"].forEach(id => $(id).disabled = !on);
+  if (!on) { $("safetyBanner").classList.remove("show"); return; }
+  const sf = rb.safety || {};
+  const cls = sf.level <= 3 ? "bad" : (sf.level <= 6 ? "warn" : "ok");
+  $("safety").innerHTML = `<div class="lvl ${cls}">${sf.level} · ${esc(sf.level_name)}</div>${esc(sf.reason)}
+    <div class="small muted" style="margin-top:4px">following ${sf.allow_follow ? "allowed" : "blocked"} ·
+      manual ${sf.allow_manual ? "allowed" : "blocked"} · forward ${sf.allow_forward ? "allowed" : "blocked"}</div>
+    ${(sf.conditions || []).length > 1 ? "<div class='small muted'>also: " + sf.conditions.slice(1).map(c => esc(c.reason)).join("; ") + "</div>" : ""}`;
+  $("safetyBanner").classList.toggle("show", sf.level <= 3 && !(s.alerts_active || []).some(a => a.severity === "emergency"));
+  $("safetyText").textContent = sf.level <= 3 ? `ROBOT STOPPED: ${sf.reason}` : "";
+  const commFault = (sf.conditions || []).some(c => c.level === "COMM_FAULT" && c.reason.includes("acknowledge"));
+  $("commBtn").style.display = commFault ? "" : "none";
+  const rep = rb.reported || {}, c = rb.commanded || {}, has = rb.connected && rep.state;
+  $("connBtn").textContent = rb.enabled ? "Disconnect" : "Connect";
+  $("robot").innerHTML = `<span class="${rb.connected ? "ok" : "bad"}">${rb.connected ? "connected" : (rb.enabled ? "NOT CONNECTED (retrying)" : "disconnected by operator")}</span>
+    ${esc(rb.host)}:${rb.port} ${rb.protocol ? "· protocol v" + rb.protocol : ""}
+    ${rb.motors_enabled === false ? " · <span class='warn'>motors disabled in firmware (safe mode)</span>" : ""}<br>
+    ack ${rb.rtt_last_ms ?? "–"} ms (mean ${rb.rtt_mean_ms ?? "–"}, p95 ${rb.rtt_p95_ms ?? "–"}) · status age ${rb.status_age_s ?? "–"} s
+    · timeouts ${rb.stats.timeouts} · reconnects ${Math.max(0, rb.stats.connects - 1)} · watchdog stops ${rb.stats.watchdog_stops}
+    · queue ${rb.queue ? rb.queue.queued : 0}
+    ${rb.replaced_by_other_laptop ? "<br><span class='warn'>another laptop took over the robot</span>" : ""}
+    ${rb.last_error ? "<br>" + esc(rb.last_error) : ""}`;
+  const R = k => has ? (rep[k] ?? "–") : "–";
+  $("cmpTable").innerHTML =
+    cmpRow("motors L/R", `${c.left}/${c.right}`, has ? `${rep.left}/${rep.right}` : "–") +
+    cmpRow("motors stopped", yes(c.left === 0 && c.right === 0), has ? yes(rep.motors_stopped) : "–") +
+    cmpRow("LED", c.emergency ? "on" : c.led, R("led")) +
+    cmpRow("buzzer", c.emergency && c.buzzer !== "off" ? "emergency" : c.buzzer, R("buzzer")) +
+    cmpRow("follow mode", c.follow_mode ? "#" + c.target_id : "off", has ? (rep.follow_mode ? "#" + rep.target_id : "off") : "–") +
+    cmpRow("emergency", yes(rb.emergency_latched), has ? yes(rep.emergency_active) : "–") +
+    cmpRow("obstacle", rb.camera_obstacle ? "camera report" : "none", has ? (rep.obstacle_detected ? rep.obstacle_source : "none") : "–") +
+    (has && rep.sensor_installed ? cmpRow("sensor distance", "", rep.distance_cm == null ? "–" : rep.distance_cm + " cm") : "") +
+    cmpRow("watchdog ok", "", has ? yes(rep.watchdog_ok) : "–") +
+    cmpRow("last command id", c.last_command_id ?? "–", R("last_command_id"));
+  // emergency panel: commanded vs confirmed
+  let em;
+  if (rb.emergency_latched) {
+    em = `<b class="bad">Emergency commanded by the laptop</b> (${rb.emergency_pending ? "sending, waiting for ESP32 ack…" : "ESP32 acknowledged"})<br>` +
+         (has ? (rep.emergency_active ? `<span class="bad">ESP32 confirms: emergency latched (${esc(rep.emergency_reason)}), motors ${rep.motors_stopped ? "stopped" : "NOT stopped"}, LED ${esc(rep.led)}, buzzer ${esc(rep.buzzer)}</span>`
+                                     : `<span class="warn">ESP32 does not report the emergency yet</span>`)
+              : `<span class="warn">no status from the ESP32 - cannot confirm the robot state</span>`);
+  } else if (has && rep.emergency_active) {
+    em = `<b class="bad">ESP32 reports an emergency</b> (${esc(rep.emergency_reason)})`;
+  } else {
+    em = "no emergency";
+  }
+  $("emergency").innerHTML = em;
+  // following
+  if (fo.available === false) { $("follow").textContent = "following disabled in settings"; return; }
+  $("follow").innerHTML = `<b>${esc(fo.state)}</b>${fo.target_id != null ? " · person #" + fo.target_id : ""}<br>${esc(fo.reason)}
+    ${fo.state === "FOLLOWING" ? `<br>wheels L ${fo.left} / R ${fo.right} · ${esc(fo.decision)}` : ""}
+    ${fo.obstacle ? `<br><span class="warn">${esc(fo.obstacle_reason)}</span>` : ""}
+    <div class="muted small">${esc(fo.note || "")}</div>`;
+  $("resumeBtn").disabled = fo.state !== "FOLLOW_READY";
+}
+setInterval(refresh, 700); refresh();
+</script>
+</body>
+</html>

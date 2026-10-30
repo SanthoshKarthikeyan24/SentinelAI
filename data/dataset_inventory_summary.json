@@ -1,0 +1,32 @@
+{
+  "videos_used": 159,
+  "videos_excluded": 1,
+  "hours": 0.356,
+  "by_subject": {
+    "S1": 32,
+    "S2": 48,
+    "S3": 43,
+    "S4": 36
+  },
+  "by_category": {
+    "ADL": 81,
+    "FALL": 78
+  },
+  "by_lighting": {
+    "Day (Light On)": 32,
+    "Day": 62,
+    "Night": 29,
+    "Day (Lights Off)": 18,
+    "Day (Lights On)": 18
+  },
+  "by_lighting_group": {
+    "day_lit": 112,
+    "night": 29,
+    "day_dim": 18
+  },
+  "fall_intervals": 79,
+  "resolutions": {
+    "1280x720": 141,
+    "640x480": 18
+  }
+}

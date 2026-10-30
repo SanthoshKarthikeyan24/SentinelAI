@@ -1,0 +1,5 @@
+# Extra packages for dataset preparation, training, evaluation and tests
+-r requirements.txt
+pandas>=2.1
+matplotlib>=3.8
+pytest>=8.0

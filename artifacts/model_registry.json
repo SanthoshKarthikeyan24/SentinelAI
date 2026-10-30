@@ -1,0 +1,103 @@
+{
+  "note": "managed by training/model_registry.py - do not edit by hand",
+  "models": {
+    "posture_classifier": {
+      "file": "posture_model.joblib",
+      "deployed": "v1-initial",
+      "versions": {
+        "v1-initial": {
+          "created": "2026-10-30T02:18:09Z",
+          "sha256": "8ff9f7fd428accedcf9aabda1aa11a74a60a4c0096c6b67bacec9bbe6e2719ca",
+          "path": "artifacts/posture_classifier/versions/v1-initial/posture_model.joblib",
+          "summary": {
+            "loso_accuracy": 0.9762,
+            "loso_macro_f1": 0.9645
+          }
+        }
+      },
+      "deploy_history": [
+        {
+          "version": "v1-initial",
+          "deployed": "2026-10-30T02:18:09Z",
+          "previous": null,
+          "reason": "adopted the model trained before the registry existed"
+        }
+      ]
+    },
+    "fall_classifier": {
+      "file": "fall_model.joblib",
+      "deployed": "v1-initial",
+      "versions": {
+        "v1-initial": {
+          "created": "2026-10-30T02:18:09Z",
+          "sha256": "abe533f6db746bcc54093eccd7546bd3d7ac6f89f71986e59162d7f2e9a66e38",
+          "path": "artifacts/fall_classifier/versions/v1-initial/fall_model.joblib",
+          "summary": {
+            "FALL_SUSPECTED": {
+              "f1": 0.8902,
+              "precision": 0.8588,
+              "recall": 0.9241
+            },
+            "FALL_CONFIRMED": {
+              "f1": 0.8188,
+              "precision": 0.8714,
+              "recall": 0.7722
+            }
+          }
+        }
+      },
+      "deploy_history": [
+        {
+          "version": "v1-initial",
+          "deployed": "2026-10-30T02:18:09Z",
+          "previous": null,
+          "reason": "adopted the model trained before the registry existed"
+        }
+      ]
+    },
+    "pose_estimation": {
+      "file": "yolo11n-pose.onnx",
+      "deployed": "v1-initial",
+      "versions": {
+        "v1-initial": {
+          "created": "2026-10-30T02:18:09Z",
+          "sha256": "93e2866b0ce678f99b4dd88af0c12e9ea2edf079a361dc2ecbc6226b77ff6408",
+          "path": "artifacts/pose_estimation/versions/v1-initial/yolo11n-pose.onnx",
+          "summary": {
+            "source": "Ultralytics YOLO11n COCO weights exported to ONNX (not trained here)"
+          }
+        }
+      },
+      "deploy_history": [
+        {
+          "version": "v1-initial",
+          "deployed": "2026-10-30T02:18:09Z",
+          "previous": null,
+          "reason": "adopted the model trained before the registry existed"
+        }
+      ]
+    },
+    "object_detection": {
+      "file": "yolo11n.onnx",
+      "deployed": "v1-initial",
+      "versions": {
+        "v1-initial": {
+          "created": "2026-10-30T02:18:09Z",
+          "sha256": "634279b40c07c6391472c51ad45b81ebc48706a9a1fe72dd3396322acd0c053b",
+          "path": "artifacts/object_detection/versions/v1-initial/yolo11n.onnx",
+          "summary": {
+            "source": "Ultralytics YOLO11n COCO weights exported to ONNX (not trained here)"
+          }
+        }
+      },
+      "deploy_history": [
+        {
+          "version": "v1-initial",
+          "deployed": "2026-10-30T02:18:09Z",
+          "previous": null,
+          "reason": "adopted the model trained before the registry existed"
+        }
+      ]
+    }
+  }
+}

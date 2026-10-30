@@ -1,0 +1,64 @@
+{
+  "created": "2026-10-29T18:29:39+00:00",
+  "gmdcsa24": {
+    "status": "ok",
+    "videos": 159,
+    "events": 356,
+    "fall_videos": 78,
+    "issues": [
+      {
+        "video_id": "gmdcsa24_S2_ADL_06",
+        "problem": "empty interval Sitting [9.7, 3.0]"
+      },
+      {
+        "video_id": "gmdcsa24_S2_Fall_19",
+        "problem": "interval '0.9 4.6' written without 'to'",
+        "action": "parsed as interval"
+      },
+      {
+        "video_id": "gmdcsa24_S3_ADL_04",
+        "problem": "missing ']' repaired",
+        "action": "parsed as interval"
+      },
+      {
+        "video_id": "gmdcsa24_S3_ADL_04",
+        "problem": "missing ']' repaired",
+        "action": "parsed as interval"
+      },
+      {
+        "video_id": "gmdcsa24_S3_ADL_04",
+        "problem": "missing ']' repaired",
+        "action": "parsed as interval"
+      },
+      {
+        "video_id": "gmdcsa24_S3_ADL_04",
+        "problem": "missing ']' repaired",
+        "action": "parsed as interval"
+      },
+      {
+        "video_id": "gmdcsa24_S3_ADL_04",
+        "problem": "missing ']' repaired",
+        "action": "parsed as interval"
+      },
+      {
+        "video_id": "gmdcsa24_S3_Fall_16",
+        "problem": "end 7.0s clipped to video length 6.08s"
+      },
+      {
+        "video_id": "gmdcsa24_S4_Fall_09",
+        "problem": "interval '2.3 6' written without 'to'",
+        "action": "parsed as interval"
+      },
+      {
+        "video_id": "gmdcsa24_S4_Fall_15",
+        "action": "EXCLUDED",
+        "problem": "fall video without a usable fall interval",
+        "text": "Falling (FW); Sitting[0 to 1.7]"
+      }
+    ]
+  },
+  "collected": {
+    "status": "none yet",
+    "expected": "data/annotations/video_events/collected_events.csv"
+  }
+}

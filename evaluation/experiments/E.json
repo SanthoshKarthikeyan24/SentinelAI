@@ -1,0 +1,147 @@
+{
+  "experiment": "E",
+  "created": "2026-10-30T02:37:09+00:00",
+  "seconds": 31.2,
+  "quick": false,
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "result": {
+    "class_counts": {
+      "SITTING": 5534,
+      "LYING": 632,
+      "STANDING": 3964
+    },
+    "no weighting": {
+      "dev_loso_S1-S3": {
+        "accuracy": 0.9629,
+        "macro_f1": 0.9488,
+        "f1_LYING": 0.9144,
+        "f1_SITTING": 0.9633,
+        "f1_STANDING": 0.9687,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 7554
+      },
+      "heldout_S4": {
+        "accuracy": 0.9942,
+        "macro_f1": 0.9903,
+        "f1_LYING": 0.982,
+        "f1_SITTING": 0.9959,
+        "f1_STANDING": 0.9929,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 2576
+      },
+      "all_loso": {
+        "accuracy": 0.9745,
+        "macro_f1": 0.9584,
+        "f1_LYING": 0.9183,
+        "f1_SITTING": 0.9776,
+        "f1_STANDING": 0.9793,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130
+      }
+    },
+    "balanced_subsample (current)": {
+      "dev_loso_S1-S3": {
+        "accuracy": 0.968,
+        "macro_f1": 0.959,
+        "f1_LYING": 0.9374,
+        "f1_SITTING": 0.9683,
+        "f1_STANDING": 0.9715,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 7554
+      },
+      "heldout_S4": {
+        "accuracy": 0.9961,
+        "macro_f1": 0.9922,
+        "f1_LYING": 0.982,
+        "f1_SITTING": 0.9972,
+        "f1_STANDING": 0.9974,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 2576
+      },
+      "all_loso": {
+        "accuracy": 0.9781,
+        "macro_f1": 0.9666,
+        "f1_LYING": 0.9382,
+        "f1_SITTING": 0.9808,
+        "f1_STANDING": 0.9807,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130
+      }
+    },
+    "oversample minority": {
+      "dev_loso_S1-S3": {
+        "accuracy": 0.9647,
+        "macro_f1": 0.9542,
+        "f1_LYING": 0.9287,
+        "f1_SITTING": 0.9643,
+        "f1_STANDING": 0.9696,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 7554
+      },
+      "heldout_S4": {
+        "accuracy": 0.988,
+        "macro_f1": 0.984,
+        "f1_LYING": 0.982,
+        "f1_SITTING": 0.9915,
+        "f1_STANDING": 0.9785,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 2576
+      },
+      "all_loso": {
+        "accuracy": 0.9731,
+        "macro_f1": 0.9592,
+        "f1_LYING": 0.9248,
+        "f1_SITTING": 0.9759,
+        "f1_STANDING": 0.9769,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130
+      }
+    }
+  }
+}

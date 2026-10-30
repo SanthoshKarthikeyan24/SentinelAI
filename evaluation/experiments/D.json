@@ -1,0 +1,213 @@
+{
+  "experiment": "D",
+  "created": "2026-10-30T02:36:38+00:00",
+  "seconds": 156.0,
+  "quick": false,
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "result": {
+    "results": {
+      "none": {
+        "dev_loso_S1-S3": {
+          "accuracy": 0.968,
+          "macro_f1": 0.959,
+          "f1_LYING": 0.9374,
+          "f1_SITTING": 0.9683,
+          "f1_STANDING": 0.9715,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 7554
+        },
+        "heldout_S4": {
+          "accuracy": 0.9961,
+          "macro_f1": 0.9922,
+          "f1_LYING": 0.982,
+          "f1_SITTING": 0.9972,
+          "f1_STANDING": 0.9974,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 2576
+        },
+        "all_loso": {
+          "accuracy": 0.9781,
+          "macro_f1": 0.9666,
+          "f1_LYING": 0.9382,
+          "f1_SITTING": 0.9808,
+          "f1_STANDING": 0.9807,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 10130
+        }
+      },
+      "mirror": {
+        "dev_loso_S1-S3": {
+          "accuracy": 0.9661,
+          "macro_f1": 0.9583,
+          "f1_LYING": 0.9395,
+          "f1_SITTING": 0.9665,
+          "f1_STANDING": 0.969,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 7554
+        },
+        "heldout_S4": {
+          "accuracy": 0.9918,
+          "macro_f1": 0.9879,
+          "f1_LYING": 0.982,
+          "f1_SITTING": 0.9942,
+          "f1_STANDING": 0.9875,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 2576
+        },
+        "all_loso": {
+          "accuracy": 0.9752,
+          "macro_f1": 0.9642,
+          "f1_LYING": 0.9374,
+          "f1_SITTING": 0.9781,
+          "f1_STANDING": 0.9772,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 10130
+        }
+      },
+      "jitter+dropout": {
+        "dev_loso_S1-S3": {
+          "accuracy": 0.9617,
+          "macro_f1": 0.956,
+          "f1_LYING": 0.9421,
+          "f1_SITTING": 0.9613,
+          "f1_STANDING": 0.9646,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 7554
+        },
+        "heldout_S4": {
+          "accuracy": 0.995,
+          "macro_f1": 0.9916,
+          "f1_LYING": 0.9846,
+          "f1_SITTING": 0.9964,
+          "f1_STANDING": 0.9938,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 2576
+        },
+        "all_loso": {
+          "accuracy": 0.9776,
+          "macro_f1": 0.9707,
+          "f1_LYING": 0.954,
+          "f1_SITTING": 0.9799,
+          "f1_STANDING": 0.9781,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 10130
+        }
+      },
+      "mirror+jitter+dropout": {
+        "dev_loso_S1-S3": {
+          "accuracy": 0.9615,
+          "macro_f1": 0.9543,
+          "f1_LYING": 0.937,
+          "f1_SITTING": 0.9612,
+          "f1_STANDING": 0.9648,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 7554
+        },
+        "heldout_S4": {
+          "accuracy": 0.9907,
+          "macro_f1": 0.9874,
+          "f1_LYING": 0.9846,
+          "f1_SITTING": 0.9934,
+          "f1_STANDING": 0.984,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 2576
+        },
+        "all_loso": {
+          "accuracy": 0.9769,
+          "macro_f1": 0.9704,
+          "f1_LYING": 0.9548,
+          "f1_SITTING": 0.979,
+          "f1_STANDING": 0.9775,
+          "classes_present": [
+            "LYING",
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 10130
+        }
+      }
+    },
+    "occlusion_test_3_keypoints_removed": {
+      "none": {
+        "accuracy": 0.9376,
+        "macro_f1": 0.9016,
+        "f1_LYING": 0.8074,
+        "f1_SITTING": 0.943,
+        "f1_STANDING": 0.9543,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130
+      },
+      "mirror+jitter+dropout": {
+        "accuracy": 0.9678,
+        "macro_f1": 0.9603,
+        "f1_LYING": 0.9423,
+        "f1_SITTING": 0.9707,
+        "f1_STANDING": 0.9679,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130
+      }
+    }
+  }
+}

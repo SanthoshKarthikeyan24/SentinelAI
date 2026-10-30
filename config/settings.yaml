@@ -1,0 +1,145 @@
+# SentinelAI configuration (Phase 1: laptop AI/ML system)
+# Every threshold used by the runtime lives here. Edit values, not code.
+# Paths are relative to the project root unless absolute.
+
+camera:
+  # 0 = laptop webcam, "http://PHONE_IP:8080/video" = Android IP Webcam,
+  # or a path to a video file for offline testing.
+  source: 0
+  width: 0               # 0 = keep the camera default
+  height: 0
+  stall_timeout_s: 3.0   # no new frame for this long -> stream is "stalled"
+  reconnect_delay_s: 2.0 # first wait before reconnecting (doubles up to max)
+  reconnect_max_delay_s: 15.0
+  max_reconnect_attempts: 0   # 0 = keep trying forever (live sources only)
+  file_realtime: false   # true = play video files at their native speed
+
+models:
+  pose_model: artifacts/pose_estimation/yolo11n-pose.onnx
+  object_model: artifacts/object_detection/yolo11n.onnx
+  posture_model: artifacts/posture_classifier/posture_model.joblib
+  fall_model: artifacts/fall_classifier/fall_model.joblib
+  # onnxruntime execution providers tried in order; unavailable ones are skipped
+  providers: [CUDAExecutionProvider, DmlExecutionProvider, CPUExecutionProvider]
+  num_threads: 0         # 0 = let onnxruntime decide
+
+detection:
+  pose_imgsz: 640
+  person_conf: 0.40      # minimum person-box score
+  nms_iou: 0.50
+  keypoint_conf: 0.35    # keypoints below this score are treated as missing
+  object_detection_enabled: true
+  object_imgsz: 640
+  object_conf: 0.40
+  object_every_n_frames: 10   # objects change slowly; save CPU
+  object_classes: [chair, couch, bed, dining table, toilet, tv, laptop, bottle, cup, backpack, handbag,
+                   suitcase, potted plant, bench, dog, cat]
+
+tracking:
+  iou_match_threshold: 0.25   # min IoU to associate detection with track
+  max_center_distance: 0.6    # fallback association: distance / box diagonal
+  min_hits: 2                 # detections before a track is "confirmed"
+  max_missed_s: 1.5           # remove a track after this long without detections
+  history_s: 6.0              # seconds of per-track history kept for analysis
+
+posture:
+  use_trained_model: true     # false = rule-based baseline only
+  min_visible_keypoints: 7    # fewer reliable keypoints -> UNKNOWN
+  unknown_proba_threshold: 0.50  # trained model below this -> UNKNOWN
+  smoothing_window: 5         # majority vote over last N frame labels
+
+fall:
+  use_trained_model: true     # false = rule-based temporal baseline only
+  window_s: 1.5               # temporal window used for fall evidence
+  model_threshold: auto       # fall-window probability needed for evidence;
+                              # auto = threshold chosen during training (saved with the model)
+  # Rule evidence (all values normalised by body height, so resolution-free)
+  descent_speed_thresh: 0.9   # hip drop speed in body-heights per second
+  descent_drop_thresh: 0.35   # total hip drop within window (body heights)
+  torso_angle_low_deg: 55     # torso tilt from vertical that counts as "down"
+  # State machine timing
+  possible_timeout_s: 2.5     # POSSIBLE_FALL with no support -> back to NORMAL
+  suspect_min_down_s: 0.4     # time spent down before FALL_SUSPECTED
+  confirm_down_s: 1.5         # time spent down (after suspected) to CONFIRM
+  recovery_up_s: 1.5          # time upright before RECOVERY_OR_RESET
+  cooldown_s: 10.0            # no new alert for the same track during cooldown
+  lost_track_grace_s: 3.0     # how long a fall in progress can be re-linked after the track is lost
+  max_timer_step_s: 0.25      # a gap between observations adds at most this to the down/up timers
+
+alerts:
+  require_acknowledgement: true
+  beep_on_alert: true         # Windows beep (winsound); ignored elsewhere
+
+logging:
+  directory: logs
+  events_jsonl: events.jsonl
+  events_csv: events.csv
+  save_alert_snapshots: false # privacy: off by default
+  clip_buffer:                # short video around an alert (logs/clips). Privacy: OFF by default.
+    enabled: false
+    pre_s: 5.0                # seconds before the alert (kept in memory only)
+    post_s: 5.0               # seconds after the alert
+    fps: 10
+    max_clips: 20             # older clips are deleted automatically
+
+dashboard:
+  host: 127.0.0.1
+  port: 5000
+  jpeg_quality: 75
+  max_recent_events: 50
+
+robot:
+  # Laptop <-> ESP32 Wi-Fi link. The AI tells the ESP32 MODEL_STARTED / FALL_DETECTED /
+  # FALL_CLEARED / MODEL_STOPPED (LED + buzzer). If the ESP32 is off or not found the app
+  # still runs normally and keeps looking for it. false = never contact the robot
+  # (or start with --no-robot).
+  enabled: true
+  # auto = find the ESP32 by itself (last address, sentinel-robot.local, then a scan of this
+  # laptop's Wi-Fi network on port 3333) - survives the hotspot giving it a new IP.
+  # Or a fixed address from the Serial Monitor, e.g. 10.61.254.98 (AP mode: 192.168.4.1).
+  host: auto
+  port: 3333                  # TCP_PORT in firmware/sentinel_robot/config.h
+  heartbeat_s: 0.15           # ping interval; must be well below the firmware WATCHDOG_MS (500 ms)
+  ack_timeout_s: 0.4          # a reply slower than this counts as missing
+  max_missed_acks: 3          # this many missing replies in a row -> reconnect
+  connect_timeout_s: 2.0
+  reconnect_delay_s: 1.0
+  reconnect_max_delay_s: 5.0
+  emergency_retry_s: 0.25     # emergency_stop re-sent this often until acknowledged
+  max_command_age_s: 0.3      # older movement decisions are never sent (stale)
+  status_stale_s: 2.5         # no robot status for this long = communication fault (robot sends 1/s)
+  max_speed_pct: 40           # laptop-side speed cap (firmware has its own MAX_SPEED_PCT)
+  default_speed_pct: 30       # speed of the dashboard arrow buttons
+  manual_hold_ms: 400         # each press-and-hold command expires on the robot after this time
+  manual_active_s: 2.0        # "manual control" mode lasts this long after the last arrow command
+  signal_on_suspected: true   # FALL_SUSPECTED -> robot LED blink + warning beeps (following stops)
+  follow:
+    # Person-following: the operator clicks a person on the dashboard video. Assumes the
+    # phone camera is mounted on the robot facing forward. With MOTORS_ENABLED 0 in the
+    # firmware the robot only reports the motion it would make - no wheel turns.
+    enabled: true             # false = refuse following
+    command_ms: 400           # each follow command expires on the robot after this (renewed every frame)
+    max_speed_pct: 35
+    min_speed_pct: 18         # motors stall below this; tune in Phase 3
+    turn_gain: 40             # turn speed per unit of horizontal error (-1 left edge .. 1 right edge)
+    forward_gain: 60
+    deadband: 0.12            # person this close to the centre = no turning
+    spin_threshold: 0.45      # person this far off-centre = turn in place first
+    target_height_ratio: 0.55 # keep the person's box about this tall (fraction of image height)
+    too_close_ratio: 0.80     # taller than this = too close, no forward motion
+    lost_grace_s: 0.7         # person unseen this long -> TARGET_LOST (select again)
+    uncertain_max_s: 3.0      # weak detection this long -> TARGET_LOST
+    min_detection_score: 0.5  # weaker = TARGET_UNCERTAIN, robot holds (robot also refuses < 0.5)
+    min_keypoint_reliability: 0.25
+    max_accel_pct_per_s: 60   # bounded acceleration (slowing down is never delayed)
+    obstacle_clear_s: 1.0     # path clear this long before following may resume
+    obstacle_auto_resume: false  # false = operator presses Resume after an obstacle stop
+    obstacle:
+      enabled: true
+      corridor_width: 0.40    # central part of the image the robot drives through
+      bottom_frac: 0.80       # object must reach below 80% of the image height (= close)
+      min_area_frac: 0.03
+      include_people: true    # other people in the path count as obstacles
+      clear_frames: 5
+      report_interval_s: 0.5  # obstacle report re-sent this often while seen (robot holds 1.5 s)
+      object_every_n_frames: 2

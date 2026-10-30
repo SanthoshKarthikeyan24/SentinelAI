@@ -1,0 +1,122 @@
+{
+  "experiment": "G",
+  "created": "2026-10-30T02:37:18+00:00",
+  "seconds": 8.9,
+  "quick": false,
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "result": {
+    "posture_smoothing": [
+      {
+        "accuracy": 0.9781,
+        "macro_f1": 0.9666,
+        "f1_LYING": 0.9382,
+        "f1_SITTING": 0.9808,
+        "f1_STANDING": 0.9807,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130,
+        "window": 1,
+        "label_changes_per_min": 11.63,
+        "delay_s_at_15fps": 0.0
+      },
+      {
+        "accuracy": 0.976,
+        "macro_f1": 0.9631,
+        "f1_LYING": 0.9314,
+        "f1_SITTING": 0.979,
+        "f1_STANDING": 0.9788,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130,
+        "window": 3,
+        "label_changes_per_min": 5.94,
+        "delay_s_at_15fps": 0.067
+      },
+      {
+        "accuracy": 0.9733,
+        "macro_f1": 0.9591,
+        "f1_LYING": 0.9244,
+        "f1_SITTING": 0.9768,
+        "f1_STANDING": 0.9762,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130,
+        "window": 5,
+        "label_changes_per_min": 5.12,
+        "delay_s_at_15fps": 0.133
+      },
+      {
+        "accuracy": 0.9672,
+        "macro_f1": 0.9487,
+        "f1_LYING": 0.9035,
+        "f1_SITTING": 0.9715,
+        "f1_STANDING": 0.9711,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130,
+        "window": 9,
+        "label_changes_per_min": 4.62,
+        "delay_s_at_15fps": 0.267
+      },
+      {
+        "accuracy": 0.9593,
+        "macro_f1": 0.9381,
+        "f1_LYING": 0.8865,
+        "f1_SITTING": 0.9648,
+        "f1_STANDING": 0.9628,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 10130,
+        "window": 15,
+        "label_changes_per_min": 4.13,
+        "delay_s_at_15fps": 0.467
+      }
+    ],
+    "ground_truth_label_changes_per_min": 2.97,
+    "current_setting": 5,
+    "fall_timing_tuning": {
+      "development_subjects": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "held_out": "S4",
+      "best": {
+        "window_s": 1.5,
+        "features": "extended",
+        "suspect_min_down_s": 0.4,
+        "model": "rf",
+        "threshold": 0.6,
+        "dev_f1": 0.9291,
+        "dev_precision": 0.9219,
+        "dev_recall": 0.9365
+      },
+      "grid_size": 8
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# SentinelAI runtime (live app). Python 3.12 recommended (3.11+ required).
+numpy>=1.26,<3
+opencv-python>=4.9
+onnxruntime>=1.17          # CPU. For a GPU on Windows you may instead install onnxruntime-directml
+scipy>=1.11
+scikit-learn>=1.9,<1.10     # models were saved with 1.9.1; keep the same minor version
+joblib>=1.3
+PyYAML>=6.0
+Flask>=3.0
+psutil>=5.9                # CPU / memory shown on the dashboard (optional)

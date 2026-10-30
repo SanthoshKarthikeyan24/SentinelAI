@@ -1,0 +1,101 @@
+{
+  "created": "2026-10-29T19:31:27+00:00",
+  "development_subjects": [
+    "S1",
+    "S2",
+    "S3"
+  ],
+  "held_out_subject": "S4",
+  "results": [
+    {
+      "window_s": 1.5,
+      "features": "base",
+      "suspect_min_down_s": 0.4,
+      "model": "rf",
+      "threshold": 0.6,
+      "dev_f1": 0.9077,
+      "dev_precision": 0.8806,
+      "dev_recall": 0.9365
+    },
+    {
+      "window_s": 1.5,
+      "features": "base",
+      "suspect_min_down_s": 0.8,
+      "model": "rf",
+      "threshold": 0.6,
+      "dev_f1": 0.8889,
+      "dev_precision": 0.8889,
+      "dev_recall": 0.8889
+    },
+    {
+      "window_s": 1.5,
+      "features": "extended",
+      "suspect_min_down_s": 0.4,
+      "model": "rf",
+      "threshold": 0.6,
+      "dev_f1": 0.9291,
+      "dev_precision": 0.9219,
+      "dev_recall": 0.9365
+    },
+    {
+      "window_s": 1.5,
+      "features": "extended",
+      "suspect_min_down_s": 0.8,
+      "model": "rf",
+      "threshold": 0.6,
+      "dev_f1": 0.9106,
+      "dev_precision": 0.9333,
+      "dev_recall": 0.8889
+    },
+    {
+      "window_s": 2.0,
+      "features": "base",
+      "suspect_min_down_s": 0.4,
+      "model": "rf",
+      "threshold": 0.5,
+      "dev_f1": 0.8889,
+      "dev_precision": 0.8889,
+      "dev_recall": 0.8889
+    },
+    {
+      "window_s": 2.0,
+      "features": "base",
+      "suspect_min_down_s": 0.8,
+      "model": "rf",
+      "threshold": 0.4,
+      "dev_f1": 0.8618,
+      "dev_precision": 0.8833,
+      "dev_recall": 0.8413
+    },
+    {
+      "window_s": 2.0,
+      "features": "extended",
+      "suspect_min_down_s": 0.4,
+      "model": "rf",
+      "threshold": 0.5,
+      "dev_f1": 0.8976,
+      "dev_precision": 0.8906,
+      "dev_recall": 0.9048
+    },
+    {
+      "window_s": 2.0,
+      "features": "extended",
+      "suspect_min_down_s": 0.8,
+      "model": "rf",
+      "threshold": 0.6,
+      "dev_f1": 0.8644,
+      "dev_precision": 0.9273,
+      "dev_recall": 0.8095
+    }
+  ],
+  "best": {
+    "window_s": 1.5,
+    "features": "extended",
+    "suspect_min_down_s": 0.4,
+    "model": "rf",
+    "threshold": 0.6,
+    "dev_f1": 0.9291,
+    "dev_precision": 0.9219,
+    "dev_recall": 0.9365
+  }
+}

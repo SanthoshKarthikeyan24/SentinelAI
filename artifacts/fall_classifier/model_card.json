@@ -1,0 +1,493 @@
+{
+  "name": "SentinelAI fall-window classifier",
+  "version": "2026-10-29T19:25:49+00:00",
+  "model_type": "Hist Gradient Boosting",
+  "decision_threshold": 0.8,
+  "training_data": {
+    "datasets": [
+      "gmdcsa24"
+    ],
+    "subjects": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "windows": 15258,
+    "positive_windows": 1406,
+    "fall_events": 79,
+    "videos": 159
+  },
+  "labelling": {
+    "window_s": 1.5,
+    "positive": "window end in [fall_start+0.4s, fall_start+2.0s] (and before fall end)",
+    "ignored": "boundary windows and post-fall windows (person already down)",
+    "negative": "all other windows, plus all windows of non-target tracks"
+  },
+  "input": {
+    "features": [
+      "n_obs",
+      "coverage",
+      "hip_drop",
+      "top_drop",
+      "head_drop",
+      "max_hip_speed",
+      "max_top_speed",
+      "max_head_speed",
+      "max_up_speed",
+      "torso_angle_start",
+      "torso_angle_end",
+      "torso_angle_delta",
+      "torso_angle_max",
+      "aspect_start",
+      "aspect_end",
+      "aspect_delta",
+      "aspect_max",
+      "height_ratio_end",
+      "down_frac",
+      "hip_angle_end",
+      "knee_angle_end",
+      "dy_head_hip_end",
+      "body_angle_end",
+      "visible_frac_mean",
+      "peak_top_drop",
+      "min_height_ratio",
+      "max_center_speed",
+      "start_motion",
+      "end_motion",
+      "wrist_hip_dy_end"
+    ],
+    "feature_format": "WINDOW_FEATURES from src/analysis/features.py"
+  },
+  "state_machine_parameters": {
+    "window_s": 1.5,
+    "model_threshold": null,
+    "descent_speed_thresh": 0.9,
+    "descent_drop_thresh": 0.35,
+    "torso_angle_low_deg": 55,
+    "possible_timeout_s": 2.5,
+    "suspect_min_down_s": 0.4,
+    "confirm_down_s": 1.5,
+    "recovery_up_s": 1.5,
+    "cooldown_s": 10.0,
+    "lost_track_grace_s": 3.0,
+    "min_window_obs": 4,
+    "min_window_coverage": 0.5
+  },
+  "evaluation": {
+    "protocol": "nested leave-one-subject-out; event matching window [start-0.5s, end+1.0s]",
+    "pooled": {
+      "trained": {
+        "FALL_SUSPECTED": {
+          "true_positives": 73,
+          "false_negatives (missed)": 6,
+          "false_positives": 12,
+          "duplicates": 1,
+          "precision": 0.8588,
+          "recall": 0.9241,
+          "f1": 0.8902,
+          "false_alarms_per_hour": 44.19,
+          "negative_hours_observed": 0.2716,
+          "delay_mean_s": 1.042,
+          "delay_median_s": 0.928,
+          "delay_max_s": 3.254
+        },
+        "FALL_CONFIRMED": {
+          "true_positives": 61,
+          "false_negatives (missed)": 18,
+          "false_positives": 9,
+          "duplicates": 0,
+          "precision": 0.8714,
+          "recall": 0.7722,
+          "f1": 0.8188,
+          "false_alarms_per_hour": 33.14,
+          "negative_hours_observed": 0.2716,
+          "delay_mean_s": 2.633,
+          "delay_median_s": 2.548,
+          "delay_max_s": 4.136
+        }
+      },
+      "baseline": {
+        "FALL_SUSPECTED": {
+          "true_positives": 67,
+          "false_negatives (missed)": 12,
+          "false_positives": 22,
+          "duplicates": 0,
+          "precision": 0.7528,
+          "recall": 0.8481,
+          "f1": 0.7976,
+          "false_alarms_per_hour": 81.02,
+          "negative_hours_observed": 0.2716,
+          "delay_mean_s": 1.01,
+          "delay_median_s": 0.916,
+          "delay_max_s": 2.859
+        },
+        "FALL_CONFIRMED": {
+          "true_positives": 57,
+          "false_negatives (missed)": 22,
+          "false_positives": 11,
+          "duplicates": 0,
+          "precision": 0.8382,
+          "recall": 0.7215,
+          "f1": 0.7755,
+          "false_alarms_per_hour": 40.51,
+          "negative_hours_observed": 0.2716,
+          "delay_mean_s": 2.655,
+          "delay_median_s": 2.49,
+          "delay_max_s": 6.274
+        }
+      }
+    },
+    "window_level": {
+      "roc_auc": 0.9838,
+      "average_precision": 0.8669,
+      "windows": 15258,
+      "positive_windows": 1406
+    },
+    "folds": [
+      {
+        "test_subject": "S1",
+        "selected_model": "Hist Gradient Boosting",
+        "threshold": 0.8,
+        "inner_f1": 0.8421,
+        "trained_suspected": {
+          "true_positives": 16,
+          "false_negatives (missed)": 0,
+          "false_positives": 0,
+          "duplicates": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "false_alarms_per_hour": 0.0,
+          "negative_hours_observed": 0.0406,
+          "delay_mean_s": 0.909,
+          "delay_median_s": 0.842,
+          "delay_max_s": 1.723
+        },
+        "trained_confirmed": {
+          "true_positives": 14,
+          "false_negatives (missed)": 2,
+          "false_positives": 0,
+          "duplicates": 0,
+          "precision": 1.0,
+          "recall": 0.875,
+          "f1": 0.9333,
+          "false_alarms_per_hour": 0.0,
+          "negative_hours_observed": 0.0406,
+          "delay_mean_s": 2.519,
+          "delay_median_s": 2.421,
+          "delay_max_s": 3.273
+        },
+        "baseline_suspected": {
+          "true_positives": 15,
+          "false_negatives (missed)": 1,
+          "false_positives": 2,
+          "duplicates": 0,
+          "precision": 0.8824,
+          "recall": 0.9375,
+          "f1": 0.9091,
+          "false_alarms_per_hour": 49.22,
+          "negative_hours_observed": 0.0406,
+          "delay_mean_s": 0.841,
+          "delay_median_s": 0.834,
+          "delay_max_s": 1.156
+        },
+        "baseline_confirmed": {
+          "true_positives": 13,
+          "false_negatives (missed)": 3,
+          "false_positives": 0,
+          "duplicates": 0,
+          "precision": 1.0,
+          "recall": 0.8125,
+          "f1": 0.8966,
+          "false_alarms_per_hour": 0.0,
+          "negative_hours_observed": 0.0406,
+          "delay_mean_s": 2.44,
+          "delay_median_s": 2.436,
+          "delay_max_s": 2.749
+        }
+      },
+      {
+        "test_subject": "S2",
+        "selected_model": "Hist Gradient Boosting",
+        "threshold": 0.8,
+        "inner_f1": 0.8972,
+        "trained_suspected": {
+          "true_positives": 25,
+          "false_negatives (missed)": 1,
+          "false_positives": 7,
+          "duplicates": 0,
+          "precision": 0.7812,
+          "recall": 0.9615,
+          "f1": 0.8621,
+          "false_alarms_per_hour": 72.92,
+          "negative_hours_observed": 0.096,
+          "delay_mean_s": 1.143,
+          "delay_median_s": 1.078,
+          "delay_max_s": 2.134
+        },
+        "trained_confirmed": {
+          "true_positives": 22,
+          "false_negatives (missed)": 4,
+          "false_positives": 6,
+          "duplicates": 0,
+          "precision": 0.7857,
+          "recall": 0.8462,
+          "f1": 0.8148,
+          "false_alarms_per_hour": 62.5,
+          "negative_hours_observed": 0.096,
+          "delay_mean_s": 2.786,
+          "delay_median_s": 2.609,
+          "delay_max_s": 4.136
+        },
+        "baseline_suspected": {
+          "true_positives": 21,
+          "false_negatives (missed)": 5,
+          "false_positives": 10,
+          "duplicates": 0,
+          "precision": 0.6774,
+          "recall": 0.8077,
+          "f1": 0.7368,
+          "false_alarms_per_hour": 104.17,
+          "negative_hours_observed": 0.096,
+          "delay_mean_s": 1.213,
+          "delay_median_s": 1.078,
+          "delay_max_s": 2.859
+        },
+        "baseline_confirmed": {
+          "true_positives": 18,
+          "false_negatives (missed)": 8,
+          "false_positives": 6,
+          "duplicates": 0,
+          "precision": 0.75,
+          "recall": 0.6923,
+          "f1": 0.72,
+          "false_alarms_per_hour": 62.5,
+          "negative_hours_observed": 0.096,
+          "delay_mean_s": 3.011,
+          "delay_median_s": 2.625,
+          "delay_max_s": 6.274
+        }
+      },
+      {
+        "test_subject": "S3",
+        "selected_model": "Random Forest",
+        "threshold": 0.4,
+        "inner_f1": 0.8871,
+        "trained_suspected": {
+          "true_positives": 18,
+          "false_negatives (missed)": 3,
+          "false_positives": 3,
+          "duplicates": 1,
+          "precision": 0.8571,
+          "recall": 0.8571,
+          "f1": 0.8571,
+          "false_alarms_per_hour": 42.27,
+          "negative_hours_observed": 0.071,
+          "delay_mean_s": 1.035,
+          "delay_median_s": 0.937,
+          "delay_max_s": 2.004
+        },
+        "trained_confirmed": {
+          "true_positives": 13,
+          "false_negatives (missed)": 8,
+          "false_positives": 1,
+          "duplicates": 0,
+          "precision": 0.9286,
+          "recall": 0.619,
+          "f1": 0.7429,
+          "false_alarms_per_hour": 14.09,
+          "negative_hours_observed": 0.071,
+          "delay_mean_s": 2.711,
+          "delay_median_s": 2.562,
+          "delay_max_s": 4.071
+        },
+        "baseline_suspected": {
+          "true_positives": 16,
+          "false_negatives (missed)": 5,
+          "false_positives": 5,
+          "duplicates": 0,
+          "precision": 0.7619,
+          "recall": 0.7619,
+          "f1": 0.7619,
+          "false_alarms_per_hour": 70.45,
+          "negative_hours_observed": 0.071,
+          "delay_mean_s": 1.128,
+          "delay_median_s": 0.985,
+          "delay_max_s": 2.004
+        },
+        "baseline_confirmed": {
+          "true_positives": 12,
+          "false_negatives (missed)": 9,
+          "false_positives": 3,
+          "duplicates": 0,
+          "precision": 0.8,
+          "recall": 0.5714,
+          "f1": 0.6667,
+          "false_alarms_per_hour": 42.27,
+          "negative_hours_observed": 0.071,
+          "delay_mean_s": 2.674,
+          "delay_median_s": 2.54,
+          "delay_max_s": 4.071
+        }
+      },
+      {
+        "test_subject": "S4",
+        "selected_model": "Random Forest",
+        "threshold": 0.6,
+        "inner_f1": 0.9291,
+        "trained_suspected": {
+          "true_positives": 14,
+          "false_negatives (missed)": 2,
+          "false_positives": 2,
+          "duplicates": 0,
+          "precision": 0.875,
+          "recall": 0.875,
+          "f1": 0.875,
+          "false_alarms_per_hour": 31.27,
+          "negative_hours_observed": 0.064,
+          "delay_mean_s": 1.021,
+          "delay_median_s": 0.831,
+          "delay_max_s": 3.254
+        },
+        "trained_confirmed": {
+          "true_positives": 12,
+          "false_negatives (missed)": 4,
+          "false_positives": 2,
+          "duplicates": 0,
+          "precision": 0.8571,
+          "recall": 0.75,
+          "f1": 0.8,
+          "false_alarms_per_hour": 31.27,
+          "negative_hours_observed": 0.064,
+          "delay_mean_s": 2.402,
+          "delay_median_s": 2.372,
+          "delay_max_s": 2.92
+        },
+        "baseline_suspected": {
+          "true_positives": 15,
+          "false_negatives (missed)": 1,
+          "false_positives": 5,
+          "duplicates": 0,
+          "precision": 0.75,
+          "recall": 0.9375,
+          "f1": 0.8333,
+          "false_alarms_per_hour": 78.19,
+          "negative_hours_observed": 0.064,
+          "delay_mean_s": 0.767,
+          "delay_median_s": 0.712,
+          "delay_max_s": 1.245
+        },
+        "baseline_confirmed": {
+          "true_positives": 14,
+          "false_negatives (missed)": 2,
+          "false_positives": 2,
+          "duplicates": 0,
+          "precision": 0.875,
+          "recall": 0.875,
+          "f1": 0.875,
+          "false_alarms_per_hour": 31.27,
+          "negative_hours_observed": 0.064,
+          "delay_mean_s": 2.381,
+          "delay_median_s": 2.271,
+          "delay_max_s": 2.995
+        }
+      }
+    ],
+    "confirmation_limit": {
+      "falls_with_at_least_s_after_onset": 4.4,
+      "count": 26,
+      "confirmed_recall_on_these": 0.8077
+    },
+    "final_selection_grid": {
+      "rf@0.2": {
+        "f1": 0.8066,
+        "precision": 0.7157,
+        "recall": 0.9241
+      },
+      "rf@0.3": {
+        "f1": 0.8588,
+        "precision": 0.8022,
+        "recall": 0.9241
+      },
+      "rf@0.4": {
+        "f1": 0.869,
+        "precision": 0.8202,
+        "recall": 0.9241
+      },
+      "rf@0.5": {
+        "f1": 0.8765,
+        "precision": 0.8554,
+        "recall": 0.8987
+      },
+      "rf@0.6": {
+        "f1": 0.875,
+        "precision": 0.8642,
+        "recall": 0.8861
+      },
+      "rf@0.7": {
+        "f1": 0.8188,
+        "precision": 0.8714,
+        "recall": 0.7722
+      },
+      "rf@0.8": {
+        "f1": 0.7591,
+        "precision": 0.8966,
+        "recall": 0.6582
+      },
+      "hgb@0.2": {
+        "f1": 0.8315,
+        "precision": 0.7475,
+        "recall": 0.9367
+      },
+      "hgb@0.3": {
+        "f1": 0.8343,
+        "precision": 0.7604,
+        "recall": 0.9241
+      },
+      "hgb@0.4": {
+        "f1": 0.8488,
+        "precision": 0.7849,
+        "recall": 0.9241
+      },
+      "hgb@0.5": {
+        "f1": 0.8538,
+        "precision": 0.7935,
+        "recall": 0.9241
+      },
+      "hgb@0.6": {
+        "f1": 0.8639,
+        "precision": 0.8111,
+        "recall": 0.9241
+      },
+      "hgb@0.7": {
+        "f1": 0.881,
+        "precision": 0.8315,
+        "recall": 0.9367
+      },
+      "hgb@0.8": {
+        "f1": 0.8916,
+        "precision": 0.8506,
+        "recall": 0.9367
+      }
+    }
+  },
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "limitations": [
+    "Staged falls by 4 young adult actors; real falls of elderly people can be slower or partial.",
+    "Videos are short (2-70 s); false alarms per hour are extrapolated from about 16 minutes of non-fall video.",
+    "Many clips end 1-3 s after the fall, so FALL_CONFIRMED (needs the person to stay down) is limited by clip length.",
+    "Camera heights 64-135 cm; a floor-level robot camera sees people from a different angle.",
+    "Falls onto a bed are labelled as falls in this dataset."
+  ]
+}

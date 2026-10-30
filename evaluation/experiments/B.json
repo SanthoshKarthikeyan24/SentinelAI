@@ -1,0 +1,105 @@
+{
+  "experiment": "B",
+  "created": "2026-10-30T09:39:53+00:00",
+  "seconds": 157.5,
+  "quick": false,
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "result": {
+    "frames": 3377,
+    "subsample_every": 3,
+    "keypoint_random_forest": {
+      "dev_loso_S1-S3": {
+        "accuracy": 0.9726,
+        "macro_f1": 0.9632,
+        "f1_LYING": 0.9404,
+        "f1_SITTING": 0.9731,
+        "f1_STANDING": 0.9761,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 2518
+      },
+      "heldout_S4": {
+        "accuracy": 0.9942,
+        "macro_f1": 0.9891,
+        "f1_LYING": 0.9767,
+        "f1_SITTING": 0.9959,
+        "f1_STANDING": 0.9946,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 859
+      },
+      "all_loso": {
+        "accuracy": 0.9816,
+        "macro_f1": 0.9744,
+        "f1_LYING": 0.9569,
+        "f1_SITTING": 0.984,
+        "f1_STANDING": 0.9823,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 3377
+      }
+    },
+    "image_hog_logistic": {
+      "dev_loso_S1-S3": {
+        "accuracy": 0.8737,
+        "macro_f1": 0.7244,
+        "f1_LYING": 0.3784,
+        "f1_SITTING": 0.8723,
+        "f1_STANDING": 0.9224,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 2518
+      },
+      "heldout_S4": {
+        "accuracy": 0.7811,
+        "macro_f1": 0.5305,
+        "f1_LYING": 0.0,
+        "f1_SITTING": 0.8374,
+        "f1_STANDING": 0.754,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 859
+      },
+      "all_loso": {
+        "accuracy": 0.8508,
+        "macro_f1": 0.7473,
+        "f1_LYING": 0.4912,
+        "f1_SITTING": 0.8612,
+        "f1_STANDING": 0.8895,
+        "classes_present": [
+          "LYING",
+          "SITTING",
+          "STANDING"
+        ],
+        "n": 3377
+      }
+    },
+    "image_ms_per_sample_classifier_only": 0.233,
+    "image_ms_per_sample_hog": 0.182
+  }
+}

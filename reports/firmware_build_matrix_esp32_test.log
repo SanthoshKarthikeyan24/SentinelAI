@@ -1,0 +1,14 @@
+== core 3.3.12
+  default: Sketch uses 954004 bytes (72%) 
+  no secrets.h (expect the #warning): Sketch uses 954004 bytes (72%)  WARNINGS/ERRORS: /tmp/claude-0/vt/esp32_test/config.h:25:2: warning: #warning "secrets.h not found - copy secrets.example.h to secrets.h and enter your Wi-Fi details" [-Wcpp]
+  passive buzzer: Sketch uses 963479 bytes (73%) 
+  no LED/buzzer/status LED: Sketch uses 950992 bytes (72%) 
+  access point: Sketch uses 948820 bytes (72%) 
+  static IP: Sketch uses 954456 bytes (72%) 
+== core 2.0.17
+  default: Sketch uses 776361 bytes (59%) 
+  no secrets.h (expect the #warning): Sketch uses 776361 bytes (59%)  WARNINGS/ERRORS: /tmp/claude-0/vt/esp32_test/config.h:25:2: warning: #warning "secrets.h not found - copy secrets.example.h to secrets.h and enter your Wi-Fi details" [-Wcpp]
+  passive buzzer: Sketch uses 782481 bytes (59%) 
+  no LED/buzzer/status LED: Sketch uses 774593 bytes (59%) 
+  access point: Sketch uses 751861 bytes (57%) 
+  static IP: Sketch uses 776877 bytes (59%) 

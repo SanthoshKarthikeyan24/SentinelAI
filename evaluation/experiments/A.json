@@ -1,0 +1,97 @@
+{
+  "experiment": "A",
+  "created": "2026-10-30T09:43:42+00:00",
+  "seconds": 229.0,
+  "quick": false,
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  },
+  "result": {
+    "videos": [
+      "gmdcsa24_S1_ADL_05",
+      "gmdcsa24_S1_ADL_11",
+      "gmdcsa24_S1_ADL_07",
+      "gmdcsa24_S2_ADL_02",
+      "gmdcsa24_S2_ADL_18",
+      "gmdcsa24_S2_ADL_15",
+      "gmdcsa24_S3_ADL_17",
+      "gmdcsa24_S3_ADL_10",
+      "gmdcsa24_S3_ADL_11",
+      "gmdcsa24_S4_ADL_04",
+      "gmdcsa24_S4_ADL_01",
+      "gmdcsa24_S4_ADL_09"
+    ],
+    "every_nth_pose_frame": 4,
+    "results": {
+      "1.0": {
+        "input": "1280x720",
+        "frames": 478,
+        "person_found_pct": 100.0,
+        "mean_visible_keypoints": 15.67,
+        "posture_usable_pct": 100.0,
+        "posture": {
+          "accuracy": 0.9749,
+          "macro_f1": 0.9756,
+          "f1_LYING": null,
+          "f1_SITTING": 0.9818,
+          "f1_STANDING": 0.9693,
+          "classes_present": [
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 478
+        },
+        "pose_ms_median": 69.8
+      },
+      "0.5": {
+        "input": "640x360",
+        "frames": 478,
+        "person_found_pct": 100.0,
+        "mean_visible_keypoints": 15.67,
+        "posture_usable_pct": 100.0,
+        "posture": {
+          "accuracy": 0.9749,
+          "macro_f1": 0.9756,
+          "f1_LYING": null,
+          "f1_SITTING": 0.9818,
+          "f1_STANDING": 0.9693,
+          "classes_present": [
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 478
+        },
+        "pose_ms_median": 70.3
+      },
+      "0.25": {
+        "input": "320x180",
+        "frames": 478,
+        "person_found_pct": 99.8,
+        "mean_visible_keypoints": 15.59,
+        "posture_usable_pct": 99.8,
+        "posture": {
+          "accuracy": 0.9602,
+          "macro_f1": 0.9684,
+          "f1_LYING": null,
+          "f1_SITTING": 0.9708,
+          "f1_STANDING": 0.966,
+          "classes_present": [
+            "SITTING",
+            "STANDING"
+          ],
+          "n": 477
+        },
+        "pose_ms_median": 70.5
+      }
+    },
+    "note": "the ONNX model input stays 640x640 (fixed export); this measures the effect of the CAMERA resolution (e.g. IP Webcam 640x480 or lower) on detection and posture"
+  }
+}

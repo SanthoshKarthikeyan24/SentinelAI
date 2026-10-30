@@ -1,0 +1,21 @@
+{
+  "created": "2026-10-29T18:39:33+00:00",
+  "pose_model": "artifacts/pose_estimation/yolo11n-pose.onnx",
+  "sample_fps": 15.0,
+  "person_conf": 0.4,
+  "processed": 160,
+  "skipped_existing": 0,
+  "failures": [],
+  "seconds": 1333.9,
+  "software": {
+    "python": "3.13.18",
+    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "cv2": "5.0.0",
+    "onnxruntime": "1.29.0",
+    "pandas": "3.0.5",
+    "joblib": "1.6.0"
+  }
+}

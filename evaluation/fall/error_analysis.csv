@@ -1,0 +1,45 @@
+video_id,error,level,time_s,description
+gmdcsa24_S1_Fall_01,MISSED,FALL_CONFIRMED,3.4,Falling from sitting on the chair to the ground. Left side Fall. Full body not visible
+gmdcsa24_S1_Fall_02,MISSED,FALL_CONFIRMED,1.9,Falling from sitting on the chair to the ground. Left side Fall. Full body not visible
+gmdcsa24_S2_ADL_08,FALSE_ALARM,FALL_SUSPECTED,7.1,Exercising (Stretching thigh and trying to touch the ground:Pyramid Pose)
+gmdcsa24_S2_ADL_08,FALSE_ALARM,FALL_CONFIRMED,8.6,Exercising (Stretching thigh and trying to touch the ground:Pyramid Pose)
+gmdcsa24_S2_ADL_09,FALSE_ALARM,FALL_SUSPECTED,4.3,Standing up from a sitting position on the bed and then sitting on the ground
+gmdcsa24_S2_ADL_12,FALSE_ALARM,FALL_SUSPECTED,3.9,Going to bed and sleeping (belly facing downwards)
+gmdcsa24_S2_ADL_12,FALSE_ALARM,FALL_CONFIRMED,5.4,Going to bed and sleeping (belly facing downwards)
+gmdcsa24_S2_ADL_13,FALSE_ALARM,FALL_SUSPECTED,1.7,Sitting on the ground and reading a book
+gmdcsa24_S2_ADL_13,FALSE_ALARM,FALL_CONFIRMED,3.2,Sitting on the ground and reading a book
+gmdcsa24_S2_ADL_19,FALSE_ALARM,FALL_SUSPECTED,1.9,Sitting on the ground and writing in a notebook
+gmdcsa24_S2_ADL_19,FALSE_ALARM,FALL_CONFIRMED,3.4,Sitting on the ground and writing in a notebook
+gmdcsa24_S2_ADL_20,FALSE_ALARM,FALL_SUSPECTED,4.6,Standing up; picking up a water bottle; and drinking water while sitting on the ground
+gmdcsa24_S2_ADL_20,FALSE_ALARM,FALL_CONFIRMED,6.1,Standing up; picking up a water bottle; and drinking water while sitting on the ground
+gmdcsa24_S2_ADL_22,FALSE_ALARM,FALL_SUSPECTED,1.4,Exercising (Push-up) and sitting
+gmdcsa24_S2_ADL_22,FALSE_ALARM,FALL_CONFIRMED,3.7,Exercising (Push-up) and sitting
+gmdcsa24_S2_Fall_02,MISSED,FALL_CONFIRMED,2.7,Right side fall on the ground after walking
+gmdcsa24_S2_Fall_05,MISSED,FALL_CONFIRMED,0.8,Left side fall (face hidden by hand)
+gmdcsa24_S2_Fall_10,MISSED,FALL_SUSPECTED,4.0,Right side fall then backward
+gmdcsa24_S2_Fall_10,MISSED,FALL_CONFIRMED,2.0,Right side fall then backward
+gmdcsa24_S2_Fall_18,MISSED,FALL_CONFIRMED,9.8,Picking a water bottle from the ground and drinking water from it then falling forward on the ground
+gmdcsa24_S3_ADL_04,FALSE_ALARM,FALL_SUSPECTED,1.1,Picking a book from the floor and putting it on the bed; sitting on the bed
+gmdcsa24_S3_ADL_05,FALSE_ALARM,FALL_SUSPECTED,2.5,Exercising (hand down & up with body bending)
+gmdcsa24_S3_ADL_08,FALSE_ALARM,FALL_SUSPECTED,2.4,Sitting to sleeping on the floor
+gmdcsa24_S3_ADL_08,FALSE_ALARM,FALL_CONFIRMED,4.0,Sitting to sleeping on the floor
+gmdcsa24_S3_Fall_01,MISSED,FALL_CONFIRMED,0.0,falling forward
+gmdcsa24_S3_Fall_04,MISSED,FALL_CONFIRMED,1.2,Walking and then falling backward on the floor
+gmdcsa24_S3_Fall_08,MISSED,FALL_CONFIRMED,0.0,Falling on the right side onto the floor from a standing position
+gmdcsa24_S3_Fall_14,MISSED,FALL_SUSPECTED,8.1,Falling backward on the floor while removing the shirt and trying to hang it on the hangar
+gmdcsa24_S3_Fall_14,MISSED,FALL_CONFIRMED,8.1,Falling backward on the floor while removing the shirt and trying to hang it on the hangar
+gmdcsa24_S3_Fall_15,MISSED,FALL_SUSPECTED,1.9,Trying to drink water from the water bottle and then falling on the floor
+gmdcsa24_S3_Fall_15,MISSED,FALL_CONFIRMED,1.9,Trying to drink water from the water bottle and then falling on the floor
+gmdcsa24_S3_Fall_16,MISSED,FALL_SUSPECTED,1.8,Walking and then falling left side on the floor
+gmdcsa24_S3_Fall_16,MISSED,FALL_CONFIRMED,1.8,Walking and then falling left side on the floor
+gmdcsa24_S3_Fall_19,MISSED,FALL_CONFIRMED,2.0,Falling on the floor from the standing position
+gmdcsa24_S4_ADL_05,FALSE_ALARM,FALL_SUSPECTED,2.9,Doing exercise (push-up); view 1
+gmdcsa24_S4_ADL_05,FALSE_ALARM,FALL_CONFIRMED,4.6,Doing exercise (push-up); view 1
+gmdcsa24_S4_ADL_06,FALSE_ALARM,FALL_SUSPECTED,2.3,Doing exercise (push-up); view 2
+gmdcsa24_S4_ADL_06,FALSE_ALARM,FALL_CONFIRMED,3.9,Doing exercise (push-up); view 2
+gmdcsa24_S4_ADL_10,FALSE_ALARM,FALL_SUSPECTED,6.6,Walking then sleeping on the bed after removing the goggles
+gmdcsa24_S4_ADL_10,FALSE_ALARM,FALL_CONFIRMED,8.2,Walking then sleeping on the bed after removing the goggles
+gmdcsa24_S4_Fall_02,MISSED,FALL_CONFIRMED,1.5,Falling (LS) from the bed to the floor
+gmdcsa24_S4_Fall_06,MISSED,FALL_CONFIRMED,1.1,Falling (LS) on the bed from sitting on the bed then falling (RS) to the floor
+gmdcsa24_S4_Fall_10,MISSED,FALL_SUSPECTED,2.2,Reading a book while sitting on the chair then falling (FW) on the ground
+gmdcsa24_S4_Fall_10,MISSED,FALL_CONFIRMED,2.2,Reading a book while sitting on the chair then falling (FW) on the ground

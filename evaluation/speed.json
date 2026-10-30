@@ -1,0 +1,13 @@
+{
+  "machine": "x86_64",
+  "frames": 40,
+  "pose_ms_mean": 53.5,
+  "pose_ms_p95": 65.9,
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "object_ms_mean": 50.1,
+  "object_ms_p95": 66.9,
+  "posture_model_ms_per_call": 9.76,
+  "fall_model_ms_per_call": 2.33
+}
